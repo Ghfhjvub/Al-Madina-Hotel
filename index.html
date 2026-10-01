@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فندق المدينة - بورتسودان</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-black text-amber-400">فندق المدينة</span>
+                <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-1 rounded">بورتسودان</span>
+            </div>
+            <nav class="hidden md:flex gap-6 text-sm font-semibold">
+                <a href="#rooms" class="hover:text-amber-400 transition">الغرف والأجنحة</a>
+                <a href="#features" class="hover:text-amber-400 transition">مميزاتنا</a>
+                <a href="#contact" class="hover:text-amber-400 transition">اتصل بنا</a>
+            </nav>
+            <div>
+                <button onclick="openAdminLogin()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition shadow">
+                    لوحة المدير
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-slate-900 text-white py-24 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-35 bg-cover bg-center" style="background-image: url('1.jpeg');"></div>
+        <div class="relative max-w-4xl mx-auto text-center space-y-6">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight">أهلاً بك في <span class="text-amber-400">فندق المدينة</span></h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto">وجهتك الأولى للإقامة الفاخرة والراحة المتميزة في قلب مدينة بورتسودان الساحلية. احجز غرفتك الآن بكل سهولة.</p>
+            <div class="pt-4">
+                <a href="#rooms" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition text-lg">احجز غرفتك الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="max-w-7xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-black text-slate-900">غرف وأجنحة فندق المدينة</h2>
+            <p class="text-slate-600 mt-2">اختر الغرفة التي تناسب احتياجاتك وتمتع بإقامة لا تُنسى</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="rooms-grid">
+            <!-- Room 1 -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                <img src="2.jpeg" alt="غرفة مفردة ديلوكس" class="h-56 w-full object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-slate-900">غرفة مفردة ديلوكس</h3>
+                            <span class="text-amber-600 font-black">$50 / ليلة</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">غرفة مريحة ومجهّزة بسرير فردي واسع، إطلالة رائعة، وتكييف هواء ممتاز.</p>
+                        <div id="status-room-1" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
+                    </div>
+                    <button id="btn-room-1" onclick="openBookingModal('غرفة مفردة ديلوكس', 50)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
+                        احجز هذه الغرفة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Room 2 -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                <img src="3.jpeg" alt="غرفة مزدوجة فاخرة" class="h-56 w-full object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-slate-900">غرفة مزدوجة فاخرة</h3>
+                            <span class="text-amber-600 font-black">$85 / ليلة</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">تضم سريرين مزدوجين أو سرير كبير كوين، مثالية للأزواج والعائلات الصغيرة.</p>
+                        <div id="status-room-2" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
+                    </div>
+                    <button id="btn-room-2" onclick="openBookingModal('غرفة مزدوجة فاخرة', 85)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
+                        احجز هذه الغرفة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Room 3 -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                <img src="4.jpeg" alt="جناح ملكي خاص" class="h-56 w-full object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-slate-900">جناح ملكي خاص</h3>
+                            <span class="text-amber-600 font-black">$150 / ليلة</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">جناح فاخر بمساحة واسعة، صالة جلوس مستقلة، وأعلى معايير الرفاهية والخدمة.</p>
+                        <div id="status-room-3" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
+                    </div>
+                    <button id="btn-room-3" onclick="openBookingModal('جناح ملكي خاص', 150)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
+                        احجز هذه الغرفة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Room 4 -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                <img src="5.jpeg" alt="غرفة عائلية واسعة" class="h-56 w-full object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-slate-900">غرفة عائلية واسعة</h3>
+                            <span class="text-amber-600 font-black">$110 / ليلة</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">غرفة رحبة تتسع لأسرة كاملة مع سريرين كبيرين ومساحة جلوس مريحة.</p>
+                        <div id="status-room-4" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
+                    </div>
+                    <button id="btn-room-4" onclick="openBookingModal('غرفة عائلية واسعة', 110)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
+                        احجز هذه الغرفة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Room 5 -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                <img src="6.jpeg" alt="جناح تنفيذي" class="h-56 w-full object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-slate-900">جناح تنفيذي</h3>
+                            <span class="text-amber-600 font-black">$130 / ليلة</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">جناح أنيق لرجال الأعمال مع مكتب عمل مستقل وخدمة إنترنت سريعة.</p>
+                        <div id="status-room-5" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
+                    </div>
+                    <button id="btn-room-5" onclick="openBookingModal('جناح تنفيذي', 130)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
+                        احجز هذه الغرفة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Room 6 -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                <img src="7.jpeg" alt="غرفة ثلاثية مريحة" class="h-56 w-full object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-slate-900">غرفة ثلاثية مريحة</h3>
+                            <span class="text-amber-600 font-black">$70 / ليلة</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">غرفة مناسبة للأصدقاء أو العائلة الصغيرة بثلاثة أسرّة وتكييف ممتاز.</p>
+                        <div id="status-room-6" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
+                    </div>
+                    <button id="btn-room-6" onclick="openBookingModal('غرفة ثلاثية مريحة', 70)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
+                        احجز هذه الغرفة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+            <h3 class="text-2xl font-black text-slate-900 mb-2">تأكيد حجز الغرفة</h3>
+            <p id="modal-room-title" class="text-amber-600 font-semibold mb-6"></p>
+            
+            <form id="booking-form" onsubmit="submitBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">اسم العميل الثلاثي</label>
+                    <input type="text" id="client-name" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="مثال: محمد أحمد علي">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">رقم الواتساب</label>
+                    <input type="tel" id="client-phone" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="09xxxxxxxx أو 2499xxxxxxxx+">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">تاريخ الوصول</label>
+                        <input type="date" id="check-in" required class="w-full border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">تاريخ المغادرة</label>
+                        <input type="date" id="check-out" required class="w-full border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">ملاحظات وطلبات خاصة</label>
+                    <textarea id="client-notes" rows="2" class="w-full border border-slate-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="أي تفاصيل إضافية..."></textarea>
+                </div>
+                <div class="flex gap-3 pt-2">
+                    <button type="button" onclick="closeBookingModal()" class="w-1/2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 rounded-xl transition">إلغاء</button>
+                    <button type="submit" id="submit-btn" class="w-1/2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl transition shadow">إرسال الحجز</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl">
+            <h3 class="text-2xl font-black text-slate-900 mb-2">تسجيل دخول المدير</h3>
+            <p class="text-slate-500 text-sm mb-6">يرجى إدخال رمز الأمان الخاص للوصول للوحة التحكم.</p>
+            <div class="space-y-4">
+                <input type="password" id="admin-pass" placeholder="رمز الأمان" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-center text-xl tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <div class="flex gap-3">
+                    <button onclick="closeAdminLogin()" class="w-1/2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 rounded-xl transition">إلغاء</button>
+                    <button onclick="verifyAdmin()" class="w-1/2 bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">دخول</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Section -->
+    <section id="admin-dashboard" class="hidden max-w-7xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 pb-6 border-b border-slate-200">
+                <div>
+                    <h2 class="text-3xl font-black text-slate-900">لوحة تحكم مدير فندق المدينة</h2>
+                    <p class="text-slate-500 text-sm mt-1">إدارة الحجوزات، قبولها، أو رفضها من قاعدة بيانات Firebase.</p>
+                </div>
+                <button onclick="logoutAdmin()" class="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition shadow">
+                    تسجيل الخروج
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
+                    <span class="text-slate-500 text-sm block">إجمالي الحجوزات</span>
+                    <span id="stat-total" class="text-3xl font-black text-slate-900 mt-1 block">0</span>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 p-5 rounded-2xl">
+                    <span class="text-amber-700 text-sm block">قيد الانتظار</span>
+                    <span id="stat-pending" class="text-3xl font-black text-amber-600 mt-1 block">0</span>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-2xl">
+                    <span class="text-emerald-700 text-sm block">المؤكدة</span>
+                    <span id="stat-confirmed" class="text-3xl font-black text-emerald-600 mt-1 block">0</span>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-right border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 text-sm">
+                            <th class="p-3 rounded-r-xl">العميل والبريد والجوال</th>
+                            <th class="p-3">الغرفة</th>
+                            <th class="p-3">تواريخ الإقامة</th>
+                            <th class="p-3">الحالة</th>
+                            <th class="p-3 rounded-l-xl text-center">الإجراءات والتحكم</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookings-table-body" class="divide-y divide-slate-100 text-sm">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800 mt-16">
+        <p>جميع الحقوق محفوظة © 2026 - فندق المدينة (بورتسودان)</p>
+    </footer>
+
+    <!-- Firebase Script & Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6rj9jXcwy6i...",
+            authDomain: "hotel-db-affa9.firebaseapp.com",
+            projectId: "hotel-db-affa9",
+            storageBucket: "hotel-db-affa9.appspot.com",
+            messagingSenderId: "775363791894",
+            appId: "1:775363791894:web:5a383857ed18ce36947937"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let selectedRoomName = '';
+        let roomPricePerNight = 0;
+        let globalBookings = [];
+
+        window.openBookingModal = function(roomName, price) {
+            selectedRoomName = roomName;
+            roomPricePerNight = price;
+            document.getElementById('modal-room-title').innerText = `الغرفة المختارة: ${roomName} ($${price} لكل ليلة)`;
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        window.closeBookingModal = function() {
+            document.getElementById('booking-modal').classList.add('hidden');
+            document.getElementById('booking-form').reset();
+        }
+
+        window.openAdminLogin = function() {
+            document.getElementById('admin-login-modal').classList.remove('hidden');
+        }
+
+        window.closeAdminLogin = function() {
+            document.getElementById('admin-login-modal').classList.add('hidden');
+            document.getElementById('admin-pass').value = '';
+        }
+
+        window.verifyAdmin = function() {
+            const pass = document.getElementById('admin-pass').value;
+            if(pass === 'hassan' || pass === 'عادل') {
+                closeAdminLogin();
+                document.getElementById('admin-dashboard').classList.remove('hidden');
+                window.scrollTo({ top: document.getElementById('admin-dashboard').offsetTop, behavior: 'smooth' });
+            } else {
+                alert('رمز الأمان غير صحيح!');
+            }
+        }
+
+        window.logoutAdmin = function() {
+            document.getElementById('admin-dashboard').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function checkRoomAvailabilityAndUI(bookingsList) {
+            const rooms = [
+                { name: 'غرفة مفردة ديلوكس', btnId: 'btn-room-1', statusId: 'status-room-1' },
+                { name: 'غرفة مزدوجة فاخرة', btnId: 'btn-room-2', statusId: 'status-room-2' },
+                { name: 'جناح ملكي خاص', btnId: 'btn-room-3', statusId: 'status-room-3' },
+                { name: 'غرفة عائلية واسعة', btnId: 'btn-room-4', statusId: 'status-room-4' },
+                { name: 'جناح تنفيذي', btnId: 'btn-room-5', statusId: 'status-room-5' },
+                { name: 'غرفة ثلاثية مريحة', btnId: 'btn-room-6', statusId: 'status-room-6' }
+            ];
+
+            const today = new Date().toISOString().split('T')[0];
+
+            rooms.forEach(room => {
+                const statusEl = document.getElementById(room.statusId);
+                const btnEl = document.getElementById(room.btnId);
+
+                const activeBookings = bookingsList.filter(b => b.roomName === room.name && b.status === 'مؤكد' && b.checkOutDate >= today);
+                
+                if (activeBookings.length > 0) {
+                    activeBookings.sort((a, b) => new Date(a.checkInDate) - new Date(b.checkInDate));
+                    const nextBooking = activeBookings[0];
+
+                    const checkInDateObj = new Date(nextBooking.checkInDate);
+                    const todayObj = new Date(today);
+                    const diffDays = Math.ceil((checkInDateObj - todayObj) / (1000 * 60 * 60 * 24));
+
+                    if (diffDays <= 0) {
+                        statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-red-100 text-red-700 text-center";
+                        statusEl.innerText = `🔴 الغرفة ممتلئة حتى يوم ${nextBooking.checkOutDate}`;
+                        btnEl.disabled = true;
+                        btnEl.className = "w-full bg-slate-300 text-slate-500 font-bold py-2.5 rounded-xl cursor-not-allowed";
+                    } else if (diffDays <= 5) {
+                        statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-amber-100 text-amber-800 text-center";
+                        statusEl.innerText = `⚠️ الغرفة ممتلئة ابتداءً من تاريخ ${nextBooking.checkInDate}`;
+                        btnEl.disabled = false;
+                        btnEl.className = "w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition";
+                    } else {
+                        statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-emerald-100 text-emerald-800 text-center";
+                        statusEl.innerText = `🟢 الغرفة متاحة (ممتلئة ابتداءً من يوم ${nextBooking.checkInDate})`;
+                        btnEl.disabled = false;
+                        btnEl.className = "w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition";
+                    }
+                } else {
+                    statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-emerald-100 text-emerald-800 text-center";
+                    statusEl.innerText = `🟢 متاح للحجز الفوري`;
+                    btnEl.disabled = false;
+                    btnEl.className = "w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition";
+                }
+            });
+        }
+
+        window.submitBooking = async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            const notes = document.getElementById('client-notes').value;
+
+            if (checkIn >= checkOut) {
+                alert('خطأ في التواريخ: تاريخ المغادرة يجب أن يكون بعد تاريخ الوصول.');
+                return;
+            }
+
+            const conflicting = globalBookings.find(b => {
+                if (b.roomName !== selectedRoomName || b.status !== 'مؤكد') return false;
+                return (checkIn < b.checkOutDate) && (checkOut > b.checkInDate);
+            });
+
+            if (conflicting) {
+                alert(`عذراً، التواريخ متعارضة مع حجز مسبق من (${conflicting.checkInDate} إلى ${conflicting.checkOutDate}).`);
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.innerText = 'جاري الإرسال...';
+            submitBtn.disabled = true;
+
+            try {
+                await addDoc(collection(db, "booking"), {
+                    clientName: name,
+                    clientPhone: phone,
+                    roomName: selectedRoomName,
+                    checkInDate: checkIn,
+                    checkOutDate: checkOut,
+                    notes: notes,
+                    status: "قيد الانتظار",
+                    createdAt: new Date().toISOString()
+                });
+
+                alert('تم إرسال طلب الحجز بنجاح!');
+                closeBookingModal();
+            } catch (error) {
+                console.error("خطأ في حفظ الحجز: ", error);
+                alert('حدث خطأ أثناء إرسال الحجز، يرجى ضبط قواعد أمان Firebase (Firestore Rules).');
+            } finally {
+                submitBtn.innerText = 'إرسال الحجز';
+                submitBtn.disabled = false;
+            }
+        }
+
+        onSnapshot(collection(db, "booking"), (snapshot) => {
+            const tbody = document.getElementById('bookings-table-body');
+            tbody.innerHTML = '';
+            globalBookings = [];
+            
+            let total = 0, pending = 0, confirmed = 0;
+            
+            if(snapshot.empty) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-400">لا توجد حجوزات مسجلة حالياً.</td></tr>`;
+            }
+
+            snapshot.forEach((docSnap) => {
+                const data = docSnap.data();
+                const id = docSnap.id;
+                globalBookings.push({ id, ...data });
+                
+                total++;
+                if(data.status === 'قيد الانتظار') pending++;
+                if(data.status === 'مؤكد') confirmed++;
+
+                let statusBadge = '';
+                if(data.status === 'مؤكد') statusBadge = '<span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-xs font-bold">مؤكد</span>';
+                else if(data.status === 'مرفوض') statusBadge = '<span class="bg-red-100 text-red-800 px-2.5 py-1 rounded-full text-xs font-bold">مرفوض</span>';
+                else statusBadge = '<span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-xs font-bold">قيد الانتظار</span>';
+
+                const row = `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-3">
+                            <div class="font-bold text-slate-900">${data.clientName || ''}</div>
+                            <div class="text-xs text-slate-500" dir="ltr">${data.clientPhone || ''}</div>
+                        </td>
+                        <td class="p-3 font-semibold text-slate-700">${data.roomName || ''}</td>
+                        <td class="p-3 text-xs text-slate-600">
+                            <div>الوصول: ${data.checkInDate || ''}</div>
+                            <div>المغادرة: ${data.checkOutDate || ''}</div>
+                        </td>
+                        <td class="p-3">${statusBadge}</td>
+                        <td class="p-3 text-center space-x-1 space-x-reverse">
+                            <button onclick="updateStatus('${id}', 'مؤكد')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold transition">قبول</button>
+                            <button onclick="updateStatus('${id}', 'مرفوض')" class="bg-amber-600 hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold transition">رفض</button>
+                            <button onclick="deleteBooking('${id}')" class="bg-red-600 hover:bg-red-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold transition">حذف</button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+
+            document.getElementById('stat-total').innerText = total;
+            document.getElementById('stat-pending').innerText = pending;
+            document.getElementById('stat-confirmed').innerText = confirmed;
+
+            checkRoomAvailabilityAndUI(globalBookings);
+        });
+
+        function normalizeWhatsAppNumber(raw) {
+            let n = String(raw || '').replace(/[^\d]/g, '');
+            if (n.startsWith('00')) n = n.slice(2);
+            else if (n.startsWith('0')) n = '249' + n.slice(1); // رقم سوداني محلي
+            return n;
+        }
+
+        window.updateStatus = async function(id, newStatus) {
+            const booking = globalBookings.find(b => b.id === id);
+
+            // فتح الواتساب مباشرة عند الضغط (قبل أي عملية انتظار) حتى لا يحظره المتصفح
+            if (newStatus === 'مؤكد' && booking) {
+                const msg = `السلام عليكم ${booking.clientName}،\n` +
+                    `يسعدنا إبلاغكم بتأكيد حجزكم في فندق المدينة - بورتسودان ✅\n\n` +
+                    `🛏️ الغرفة: ${booking.roomName}\n` +
+                    `📅 الوصول: ${booking.checkInDate}\n` +
+                    `📅 المغادرة: ${booking.checkOutDate}\n\n` +
+                    `نتشرف باستقبالكم.`;
+                const url = `https://api.whatsapp.com/send?phone=${normalizeWhatsAppNumber(booking.clientPhone)}&text=${encodeURIComponent(msg)}`;
+                const w = window.open(url, '_blank');
+                if (!w) window.location.href = url; // إذا حُظرت النافذة ننتقل في نفس الصفحة
+            }
+
+            try {
+                await updateDoc(doc(db, "booking", id), { status: newStatus });
+            } catch (error) {
+                console.error("خطأ في التحديث:", error);
+                alert('تعذر تحديث حالة الحجز، تحقق من قواعد Firebase.');
+            }
+        }
+
+        window.deleteBooking = async function(id) {
+            if(confirm('هل أنت متأكد من حذف الحجز؟')) {
+                try {
+                    await deleteDoc(doc(db, "booking", id));
+                } catch (error) {
+                    console.error("خطأ في الحذف:", error);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
