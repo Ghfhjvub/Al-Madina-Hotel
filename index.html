@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فندق المدينة - بورتسودان</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind مُجمَّع محلياً (يعمل بدون إنترنت) -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <script>
+        // يجب أن تكون في الـ head لأن صور الشعارات قد تفشل قبل تحميل باقي الكود
+        window.logoFallback = function(text, color) {
+            const d = document.createElement('div');
+            d.className = 'h-9 mx-auto rounded-lg flex items-center justify-center text-white font-black text-sm';
+            d.style.background = color;
+            d.textContent = text;
+            return d;
+        };
+    </script>
     <style>
-        body { font-family: 'Cairo', sans-serif; }
+        /* خط Cairo محلي: ضع الملف fonts/Cairo.woff2 (اختياري). وإن لم يوجد يُستخدم خط النظام */
+        @font-face { font-family: 'Cairo'; src: local('Cairo'), url('fonts/Cairo.woff2') format('woff2'); font-weight: 200 900; font-display: swap; }
+        body { font-family: 'Cairo', Tahoma, 'Segoe UI', Arial, sans-serif; }
         body, .dark-t { transition: background-color .3s, color .3s; }
         body.dark { background:#0b1220; color:#e2e8f0; }
         .dark .bg-slate-50 { background:#0b1220; }
@@ -24,6 +35,64 @@
         .dark .bg-slate-900.w-full { background:#334155; }
         .dark .bg-slate-900.w-full:hover { background:#f59e0b; color:#020617; }
         .dark tr:hover.hover\:bg-slate-50, .dark .hover\:bg-slate-50:hover { background:#273449; }
+
+        /* صفحة سجل الحجوزات (داخل لوحة المدير) */
+        .admin-tab { flex:1 1 0%; }
+        @media (min-width:768px) { .admin-tab { flex:none; } }
+        .rec-stats { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1rem; }
+        @media (min-width:768px) { .rec-stats { grid-template-columns:repeat(4, minmax(0, 1fr)); } }
+        .rec-table th, .rec-table td { white-space:nowrap; vertical-align:top; }
+        .rec-table td.rec-name { white-space:normal; min-width:7rem; max-width:11rem; overflow-wrap:anywhere; }
+        .rec-table td.rec-wrap { white-space:normal; min-width:7rem; max-width:10.5rem; overflow-wrap:anywhere; }
+        .rec-table td.rec-notes { white-space:pre-line; min-width:8rem; max-width:12rem; overflow-wrap:anywhere; }
+        .rec-table tbody tr:hover { background:rgba(148,163,184,.12); }
+
+        /* تبويبات لوحة المدير: تلتف على الجوال */
+        .admin-tabs { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:2rem; }
+        .admin-tabs .admin-tab { flex:1 1 9rem; }
+        @media (min-width:768px) { .admin-tabs .admin-tab { flex:none; } }
+
+        /* خيارات في صف واحد (الدفع / النقل) */
+        .opt-row { display:grid; gap:.5rem; }
+        .opt-row-2 { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+        .opt-row-3 { grid-template-columns:repeat(3, minmax(0, 1fr)); }
+        .opt-card { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3rem; text-align:center;
+                    border:1px solid #cbd5e1; border-radius:.75rem; padding:.55rem .3rem; cursor:pointer;
+                    font-size:.78rem; font-weight:700; line-height:1.35; transition:border-color .15s, background-color .15s, box-shadow .15s; }
+        .opt-card:hover { border-color:#f59e0b; }
+        .opt-card.sel { border-color:#f59e0b; background:#fffbeb; box-shadow:0 0 0 2px #f59e0b; color:#78350f; }
+        .opt-card small { font-weight:400; font-size:.68rem; color:#64748b; }
+        .dark .opt-card { border-color:#334155; }
+        .dark .opt-card.sel { background:#3b2f12; color:#fde68a; }
+
+        /* تصنيف الغرف + الإعجاب + عدد الحجوزات */
+        .rf-btn { padding:.55rem 1.25rem; border-radius:.75rem; font-weight:700; font-size:.875rem; background:#f1f5f9; color:#334155; transition:background-color .15s; }
+        .rf-btn:hover { background:#e2e8f0; }
+        .rf-btn.on { background:#f59e0b; color:#020617; box-shadow:0 1px 3px rgba(0,0,0,.15); }
+        .dark .rf-btn { background:#334155; color:#e2e8f0; }
+        .dark .rf-btn.on { background:#f59e0b; color:#020617; }
+        .room-img { position:relative; height:14rem; background:linear-gradient(135deg,#fbbf24,#f97316); }
+        .room-img img { width:100%; height:100%; object-fit:cover; }
+        .best-badge { position:absolute; top:.6rem; right:.6rem; background:#f59e0b; color:#020617; font-weight:900; font-size:.72rem;
+                      padding:.25rem .65rem; border-radius:9999px; box-shadow:0 2px 6px rgba(0,0,0,.3); }
+        .room-stats { display:flex; align-items:center; justify-content:space-between; gap:.5rem; margin-bottom:.9rem; }
+        .stat-pill { font-size:.75rem; font-weight:700; background:#f1f5f9; color:#475569; padding:.35rem .7rem; border-radius:9999px; }
+        .dark .stat-pill { background:#334155; color:#cbd5e1; }
+        .like-btn { display:inline-flex; align-items:center; gap:.35rem; font-size:.8rem; font-weight:800; padding:.3rem .8rem; border-radius:9999px;
+                    border:1px solid #fecaca; background:#fff; color:#dc2626; transition:transform .15s, background-color .15s; }
+        .like-btn:hover { transform:scale(1.07); background:#fef2f2; }
+        .like-btn.liked { background:#dc2626; border-color:#dc2626; color:#fff; }
+        .like-btn:disabled { opacity:.6; cursor:wait; }
+        .dark .like-btn { background:#1e293b; border-color:#7f1d1d; }
+        .dark .like-btn.liked { background:#dc2626; }
+
+        /* تقرير العملاء */
+        .vip-badge { background:#fef3c7; color:#92400e; border:1px solid #fcd34d; padding:.15rem .6rem; border-radius:9999px; font-size:.72rem; font-weight:800; white-space:nowrap; }
+        .cnt-badge { display:inline-block; min-width:2rem; text-align:center; background:#0f172a; color:#fff; padding:.15rem .6rem; border-radius:9999px; font-weight:800; font-size:.8rem; }
+        .cnt-badge.vip { background:#f59e0b; color:#020617; }
+        .dark .cnt-badge { background:#475569; }
+        .dark .cnt-badge.vip { background:#f59e0b; }
+        .dark .vip-badge { background:#3b2f12; color:#fde68a; border-color:#92400e; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -53,7 +122,14 @@
 
     <!-- Hero Section -->
     <section class="relative bg-slate-900 text-white py-24 px-4 overflow-hidden">
-        <div class="absolute inset-0 opacity-35 bg-cover bg-center" style="background-image: url('1.jpeg');"></div>
+        <!-- خلفية فيديو: ضع ملف الفيديو بجانب index.html باسم hero.mp4 (يمكن إضافة hero.webm أيضًا).
+             إن لم يوجد الفيديو أو تعذّر تشغيله تظهر الصورة 1.jpeg تلقائيًا. -->
+        <div class="absolute inset-0 opacity-35 bg-cover bg-center overflow-hidden" style="background-image: url('1.jpeg');">
+            <video id="hero-video" class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto" poster="1.jpeg" aria-hidden="true">
+                <source src="hero.mp4" type="video/mp4">
+                <source src="hero.webm" type="video/webm">
+            </video>
+        </div>
         <div class="relative max-w-4xl mx-auto text-center space-y-6">
             <h1 class="text-4xl md:text-6xl font-black tracking-tight">أهلاً بك في <span class="text-amber-400">فندق المدينة</span></h1>
             <p class="text-lg text-slate-300 max-w-2xl mx-auto">وجهتك الأولى للإقامة الفاخرة والراحة المتميزة في قلب مدينة بورتسودان الساحلية. احجز غرفتك الآن بكل سهولة.</p>
@@ -70,115 +146,15 @@
             <p class="text-slate-600 mt-2">اختر الغرفة التي تناسب احتياجاتك وتمتع بإقامة لا تُنسى</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="rooms-grid">
-            <!-- Room 1 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
-                <img src="2.jpeg" alt="غرفة مفردة ديلوكس" class="h-56 w-full object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">غرفة مفردة ديلوكس</h3>
-                            <span class="text-amber-600 font-black">$50 / ليلة</span>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-4">غرفة مريحة ومجهّزة بسرير فردي واسع، إطلالة رائعة، وتكييف هواء ممتاز.</p>
-                        <div id="status-room-1" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
-                    </div>
-                    <button id="btn-room-1" onclick="openBookingModal('غرفة مفردة ديلوكس', 50)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
-                        احجز هذه الغرفة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Room 2 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
-                <img src="3.jpeg" alt="غرفة مزدوجة فاخرة" class="h-56 w-full object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">غرفة مزدوجة فاخرة</h3>
-                            <span class="text-amber-600 font-black">$85 / ليلة</span>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-4">تضم سريرين مزدوجين أو سرير كبير كوين، مثالية للأزواج والعائلات الصغيرة.</p>
-                        <div id="status-room-2" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
-                    </div>
-                    <button id="btn-room-2" onclick="openBookingModal('غرفة مزدوجة فاخرة', 85)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
-                        احجز هذه الغرفة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Room 3 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
-                <img src="4.jpeg" alt="جناح ملكي خاص" class="h-56 w-full object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">جناح ملكي خاص</h3>
-                            <span class="text-amber-600 font-black">$150 / ليلة</span>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-4">جناح فاخر بمساحة واسعة، صالة جلوس مستقلة، وأعلى معايير الرفاهية والخدمة.</p>
-                        <div id="status-room-3" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
-                    </div>
-                    <button id="btn-room-3" onclick="openBookingModal('جناح ملكي خاص', 150)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
-                        احجز هذه الغرفة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Room 4 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
-                <img src="5.jpeg" alt="غرفة عائلية واسعة" class="h-56 w-full object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">غرفة عائلية واسعة</h3>
-                            <span class="text-amber-600 font-black">$110 / ليلة</span>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-4">غرفة رحبة تتسع لأسرة كاملة مع سريرين كبيرين ومساحة جلوس مريحة.</p>
-                        <div id="status-room-4" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
-                    </div>
-                    <button id="btn-room-4" onclick="openBookingModal('غرفة عائلية واسعة', 110)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
-                        احجز هذه الغرفة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Room 5 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
-                <img src="6.jpeg" alt="جناح تنفيذي" class="h-56 w-full object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">جناح تنفيذي</h3>
-                            <span class="text-amber-600 font-black">$130 / ليلة</span>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-4">جناح أنيق لرجال الأعمال مع مكتب عمل مستقل وخدمة إنترنت سريعة.</p>
-                        <div id="status-room-5" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
-                    </div>
-                    <button id="btn-room-5" onclick="openBookingModal('جناح تنفيذي', 130)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
-                        احجز هذه الغرفة
-                    </button>
-                </div>
-            </div>
-
-            <!-- Room 6 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
-                <img src="7.jpeg" alt="غرفة ثلاثية مريحة" class="h-56 w-full object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">غرفة ثلاثية مريحة</h3>
-                            <span class="text-amber-600 font-black">$70 / ليلة</span>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-4">غرفة مناسبة للأصدقاء أو العائلة الصغيرة بثلاثة أسرّة وتكييف ممتاز.</p>
-                        <div id="status-room-6" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
-                    </div>
-                    <button id="btn-room-6" onclick="openBookingModal('غرفة ثلاثية مريحة', 70)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
-                        احجز هذه الغرفة
-                    </button>
-                </div>
-            </div>
+        <!-- تصنيف الغرف: الكل / أفضل الغرف (الغرف التي حصلت على إعجاب) -->
+        <div class="flex justify-center gap-2 mb-8" style="flex-wrap:wrap">
+            <button id="rf-all" onclick="setRoomsFilter('all')" class="rf-btn on">كل الغرف</button>
+            <button id="rf-best" onclick="setRoomsFilter('best')" class="rf-btn">🏆 أفضل الغرف <span id="rf-best-n">(0)</span></button>
         </div>
+        <p id="best-empty" class="hidden text-center text-slate-500 mb-8">لا توجد غرف ضمن «أفضل الغرف» بعد. اضغط ❤️ على الغرفة التي أعجبتك لتنضم إلى هذا التصنيف.</p>
+
+        <!-- بطاقات الغرف تُنشأ من القائمة ROOMS في الكود (يمكنك إضافة غرف جديدة هناك) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="rooms-grid"></div>
     </section>
 
     <!-- Offers Section -->
@@ -286,7 +262,7 @@
 
     <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+        <div class="bg-white rounded-2xl w-full p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto" style="max-width:34rem">
             <h3 class="text-2xl font-black text-slate-900 mb-2">تأكيد حجز الغرفة</h3>
             <p id="modal-room-title" class="text-amber-600 font-semibold mb-6"></p>
             
@@ -315,15 +291,9 @@
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-2">طريقة الدفع <span class="text-red-500">*</span></label>
-                    <div class="space-y-2">
-                        <label class="flex items-center gap-3 border border-slate-300 rounded-xl px-4 py-2.5 cursor-pointer">
-                            <input type="radio" name="pay-method" value="cash" required onchange="onPayChange()">
-                            <span class="font-semibold text-sm">💵 الدفع عند الوصول</span>
-                        </label>
-                        <label class="flex items-center gap-3 border border-slate-300 rounded-xl px-4 py-2.5 cursor-pointer">
-                            <input type="radio" name="pay-method" value="bank" onchange="onPayChange()">
-                            <span class="font-semibold text-sm">🏦 تطبيق بنكي (حجز مسبق)</span>
-                        </label>
+                    <div class="opt-row opt-row-2">
+                        <label class="opt-card"><input type="radio" name="pay-method" value="cash" required onchange="onPayChange()"><span>💵 الدفع عند الوصول</span></label>
+                        <label class="opt-card"><input type="radio" name="pay-method" value="bank" onchange="onPayChange()"><span>🏦 تطبيق بنكي <small>(حجز مسبق)</small></span></label>
                     </div>
                     <div id="bank-box" class="hidden mt-3 space-y-3">
                         <p class="text-xs font-bold text-slate-600">اختر البنك / التطبيق <span class="text-red-500">* (إجباري)</span></p>
@@ -347,10 +317,16 @@
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-2">خدمة النقل (اختياري)</label>
-                    <div class="space-y-2">
-                        <label class="flex items-center gap-3 border border-slate-300 rounded-xl px-4 py-2 cursor-pointer text-sm"><input type="radio" name="transport" value="none" checked> بدون</label>
-                        <label class="flex items-center gap-3 border border-slate-300 rounded-xl px-4 py-2 cursor-pointer text-sm"><input type="radio" name="transport" value="limousine"> 🚘 ليموزين لاستقبالي من المطار</label>
-                        <label class="flex items-center gap-3 border border-slate-300 rounded-xl px-4 py-2 cursor-pointer text-sm"><input type="radio" name="transport" value="taxi"> 🚕 تاكسي لاستقبالي من الميناء البري</label>
+                    <div class="opt-row opt-row-3">
+                        <label class="opt-card"><input type="radio" name="transport" value="none" checked onchange="onTransportChange()"><span>🚫 بدون</span></label>
+                        <label class="opt-card"><input type="radio" name="transport" value="limousine" onchange="onTransportChange()"><span>🚘 ليموزين <small>من المطار</small></span></label>
+                        <label class="opt-card"><input type="radio" name="transport" value="taxi" onchange="onTransportChange()"><span>🚕 تاكسي <small>من الميناء البري</small></span></label>
+                    </div>
+                    <div id="transport-box" class="hidden mt-3 space-y-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+                        <label id="transport-time-label" class="block text-xs font-bold text-slate-700"></label>
+                        <input type="datetime-local" id="transport-time" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm">
+                        <label id="transport-ref-label" class="block text-xs font-bold text-slate-700"></label>
+                        <input type="text" id="transport-ref" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm">
                     </div>
                 </div>
                 <div class="flex gap-3 pt-2">
@@ -358,6 +334,41 @@
                     <button type="submit" id="submit-btn" class="w-1/2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl transition shadow">إرسال الحجز</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Offer Booking Modal -->
+    <div id="offer-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl max-h-[92vh] overflow-y-auto">
+            <h3 class="text-2xl font-black text-slate-900 mb-1">حجز العرض</h3>
+            <p id="offer-modal-title" class="text-amber-600 font-semibold"></p>
+            <div id="offer-modal-prices" class="text-sm text-slate-600 mt-2 mb-5 space-y-1"></div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">الاسم</label>
+                    <input id="of-name" class="w-full border border-slate-300 rounded-xl px-4 py-2.5" placeholder="الاسم كما هو مسجل">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">رقم الهاتف</label>
+                    <input id="of-phone" type="tel" class="w-full border border-slate-300 rounded-xl px-4 py-2.5" placeholder="09xxxxxxxx">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">هل أنت مقيم في الفندق؟</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center gap-2 border border-slate-300 rounded-xl px-3 py-2 text-sm cursor-pointer"><input type="radio" name="of-resident" value="yes" onchange="onResidentChange()"> نعم، مقيم</label>
+                        <label class="flex items-center gap-2 border border-slate-300 rounded-xl px-3 py-2 text-sm cursor-pointer"><input type="radio" name="of-resident" value="no" onchange="onResidentChange()"> لا، من خارج الفندق</label>
+                    </div>
+                </div>
+                <div id="of-room-box" class="hidden">
+                    <label class="block text-sm font-bold text-slate-700 mb-1">رقم الغرفة أو نوعها</label>
+                    <input id="of-room" class="w-full border border-slate-300 rounded-xl px-4 py-2.5" placeholder="مثال: 205 أو جناح تنفيذي">
+                </div>
+                <div id="of-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm font-bold rounded-xl p-3"></div>
+                <div class="flex gap-3 pt-1">
+                    <button onclick="closeOfferModal()" class="w-1/2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2.5 rounded-xl transition">إلغاء</button>
+                    <button id="of-submit" onclick="submitOfferBooking()" class="w-1/2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl transition shadow">تأكيد الحجز</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -382,13 +393,21 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 pb-6 border-b border-slate-200">
                 <div>
                     <h2 class="text-3xl font-black text-slate-900">لوحة تحكم مدير فندق المدينة</h2>
-                    <p class="text-slate-500 text-sm mt-1">إدارة الحجوزات، قبولها، أو رفضها من قاعدة بيانات Firebase.</p>
+                    <p class="text-slate-500 text-sm mt-1">إدارة الحجوزات، قبولها، أو رفضها من قاعدة البيانات المحلية.</p>
                 </div>
                 <button onclick="logoutAdmin()" class="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition shadow">
                     تسجيل الخروج
                 </button>
             </div>
 
+            <!-- تبويبات لوحة المدير -->
+            <div class="admin-tabs">
+                <button id="tab-btn-bookings" onclick="showAdminTab('bookings')" class="admin-tab bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition shadow">📋 الحجوزات والعروض</button>
+                <button id="tab-btn-customers" onclick="showAdminTab('customers')" class="admin-tab bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm transition">👥 العملاء</button>
+                <button id="tab-btn-records" onclick="showAdminTab('records')" class="admin-tab bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm transition">🗂️ سجل الحجوزات</button>
+            </div>
+
+            <div id="admin-tab-bookings">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
                 <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
                     <span class="text-slate-500 text-sm block">إجمالي الحجوزات</span>
@@ -415,8 +434,8 @@
                         <option value="عرض خاص">عرض خاص</option>
                         <option value="أخرى">أخرى</option>
                     </select>
-                    <input id="offer-price" placeholder="السعر الحالي (مثال: $40)" class="border border-slate-300 rounded-xl px-4 py-2.5">
-                    <input id="offer-old-price" placeholder="السعر قبل التخفيض (اختياري)" class="border border-slate-300 rounded-xl px-4 py-2.5">
+                    <input id="offer-price" placeholder="سعر المقيمين / سعر التخفيض (مثال: $40)" class="border border-slate-300 rounded-xl px-4 py-2.5">
+                    <input id="offer-old-price" placeholder="السعر الأصلي لغير المقيمين (مثال: $60)" class="border border-slate-300 rounded-xl px-4 py-2.5">
                     <input id="offer-until" type="date" class="border border-slate-300 rounded-xl px-4 py-2.5" title="ينتهي العرض في">
                     <textarea id="offer-desc" rows="2" placeholder="تفاصيل العرض" class="border border-slate-300 rounded-xl px-4 py-2.5 md:col-span-2"></textarea>
                     <div class="md:col-span-2">
@@ -443,6 +462,138 @@
                     </tbody>
                 </table>
             </div>
+            </div>
+            <!-- نهاية تبويب الحجوزات والعروض -->
+
+            <!-- تبويب العملاء وزوار الموقع -->
+            <div id="admin-tab-customers" class="hidden">
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 text-sm leading-7" style="color:#44403c">
+                    👥 <b>العملاء:</b> كل شخص يرسل حجزًا (غرفة أو عرض) يُحفظ اسمه هنا تلقائيًا. إذا حجز <b>أكثر من مرتين</b> (3 حجوزات فأكثر) يُضاف إلى <b>العملاء المميزين</b> ⭐.
+                    القوائم مرتبة <b>تصاعديًا</b> حسب عدد مرات الحجز. العميل يُعرَّف برقم جواله (وإن تغيّر اسمه يبقى نفس العميل).
+                </div>
+
+                <div class="rec-stats mb-6">
+                    <div class="bg-sky-50 border border-sky-200 p-5 rounded-2xl" style="background:#f0f9ff;border-color:#bae6fd">
+                        <span class="text-sm block" style="color:#0369a1">زوار الموقع (أشخاص مختلفون)</span>
+                        <span id="cs-visitors" class="text-3xl font-black mt-1 block" style="color:#0284c7">0</span>
+                        <span id="cs-visitors-today" class="text-xs block mt-1" style="color:#0369a1"></span>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
+                        <span class="text-slate-500 text-sm block">إجمالي الزيارات</span>
+                        <span id="cs-visits" class="text-3xl font-black text-slate-900 mt-1 block">0</span>
+                        <span id="cs-visits-today" class="text-xs text-slate-500 block mt-1"></span>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-2xl">
+                        <span class="text-emerald-700 text-sm block">عملاء قاموا بالحجز</span>
+                        <span id="cs-customers" class="text-3xl font-black text-emerald-600 mt-1 block">0</span>
+                        <span id="cs-conv" class="text-xs block mt-1" style="color:#047857"></span>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-5 rounded-2xl">
+                        <span class="text-amber-700 text-sm block">عملاء مميزون ⭐</span>
+                        <span id="cs-vip" class="text-3xl font-black text-amber-600 mt-1 block">0</span>
+                        <span class="text-xs block mt-1" style="color:#92400e">حجزوا أكثر من مرتين</span>
+                    </div>
+                </div>
+
+                <input id="cust-search" type="search" oninput="renderCustomers()" placeholder="بحث باسم العميل أو رقم جواله..." class="w-full border border-slate-300 rounded-xl px-4 py-2.5 mb-6">
+
+                <h3 class="text-xl font-black text-slate-900 mb-3">⭐ قائمة العملاء المميزين</h3>
+                <div class="overflow-x-auto mb-10">
+                    <table class="rec-table w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 text-sm">
+                                <th class="p-2.5 rounded-r-xl">#</th>
+                                <th class="p-2.5">اسم العميل</th>
+                                <th class="p-2.5">رقم الجوال</th>
+                                <th class="p-2.5">مرات الحجز</th>
+                                <th class="p-2.5">المؤكدة</th>
+                                <th class="p-2.5">ما حجزه</th>
+                                <th class="p-2.5 rounded-l-xl">آخر حجز</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vip-table-body" class="divide-y divide-slate-100 text-sm"></tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-xl font-black text-slate-900 mb-3">👥 جميع العملاء <span class="text-sm font-normal text-slate-500">(من الأقل حجزًا إلى الأكثر)</span></h3>
+                <div class="overflow-x-auto">
+                    <table class="rec-table w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 text-sm">
+                                <th class="p-2.5 rounded-r-xl">#</th>
+                                <th class="p-2.5">اسم العميل</th>
+                                <th class="p-2.5">رقم الجوال</th>
+                                <th class="p-2.5">مرات الحجز</th>
+                                <th class="p-2.5">المؤكدة</th>
+                                <th class="p-2.5">ما حجزه</th>
+                                <th class="p-2.5">آخر حجز</th>
+                                <th class="p-2.5 rounded-l-xl">التصنيف</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customers-table-body" class="divide-y divide-slate-100 text-sm"></tbody>
+                    </table>
+                </div>
+                <div id="cust-footer" class="mt-4 text-center text-sm text-slate-500"></div>
+            </div>
+            <!-- نهاية تبويب العملاء -->
+
+            <!-- تبويب سجل الحجوزات الدائم -->
+            <div id="admin-tab-records" class="hidden">
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 text-sm leading-7" style="color:#44403c">
+                    🔒 <b>سجل دائم:</b> يُسجَّل هنا تلقائيًا كل طلب حجز (غرفة أو عرض) بكامل بيانات العميل، ثم قرار المدير (قبول أو رفض) كسجل جديد.
+                    لا يوجد زر حذف أو تعديل لهذه السجلات، وحذف الحجز من تبويب الحجوزات لا يمسّها. تُحذف فقط من قاعدة البيانات مباشرة.
+                </div>
+
+                <div class="rec-stats mb-6">
+                    <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl">
+                        <span class="text-slate-500 text-sm block">إجمالي الحجوزات المسجّلة</span>
+                        <span id="rec-stat-total" class="text-3xl font-black text-slate-900 mt-1 block">0</span>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-2xl">
+                        <span class="text-emerald-700 text-sm block">مقبولة</span>
+                        <span id="rec-stat-accepted" class="text-3xl font-black text-emerald-600 mt-1 block">0</span>
+                    </div>
+                    <div class="bg-red-50 border border-red-200 p-5 rounded-2xl">
+                        <span class="text-red-700 text-sm block">مرفوضة</span>
+                        <span id="rec-stat-rejected" class="text-3xl font-black text-red-600 mt-1 block">0</span>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-5 rounded-2xl">
+                        <span class="text-amber-700 text-sm block">بانتظار القرار</span>
+                        <span id="rec-stat-pending" class="text-3xl font-black text-amber-600 mt-1 block">0</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-3 mb-4">
+                    <input id="rec-search" type="search" oninput="onRecFilter()" placeholder="بحث بالاسم أو رقم الجوال أو الغرفة أو العرض..." class="flex-1 border border-slate-300 rounded-xl px-4 py-2.5">
+                    <select id="rec-filter" onchange="onRecFilter()" class="border border-slate-300 rounded-xl px-4 py-2.5 bg-white text-slate-800">
+                        <option value="">كل السجلات</option>
+                        <option value="قيد الانتظار">طلبات الحجز (قيد الانتظار)</option>
+                        <option value="مقبول">المقبولة فقط</option>
+                        <option value="مرفوض">المرفوضة فقط</option>
+                    </select>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="rec-table w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 text-sm">
+                                <th class="p-2.5 rounded-r-xl">#</th>
+                                <th class="p-2.5">القرار</th>
+                                <th class="p-2.5">وقت التسجيل</th>
+                                <th class="p-2.5">اسم العميل</th>
+                                <th class="p-2.5">رقم الجوال</th>
+                                <th class="p-2.5">الغرفة / العرض</th>
+                                <th class="p-2.5">تواريخ الإقامة</th>
+                                <th class="p-2.5">الدفع</th>
+                                <th class="p-2.5">النقل</th>
+                                <th class="p-2.5 rounded-l-xl">ملاحظات العميل</th>
+                            </tr>
+                        </thead>
+                        <tbody id="records-table-body" class="divide-y divide-slate-100 text-sm"></tbody>
+                    </table>
+                </div>
+                <div id="rec-footer" class="mt-4 text-center text-sm text-slate-500"></div>
+            </div>
         </div>
     </section>
 
@@ -451,32 +602,345 @@
         <p>جميع الحقوق محفوظة © 2026 - فندق المدينة (بورتسودان)</p>
     </footer>
 
-    <!-- Firebase Script & Logic -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    <!-- المنطق + طبقة البيانات المحلية (بدون إنترنت) -->
+    <script>
+        // ================== طبقة البيانات ==================
+        // الوضع الافتراضي: التخزين داخل المتصفح (localStorage) ← يعمل بدون أي إنترنت أو خادم.
+        // للربط مع قاعدة SQL على جهازك: شغّل server.js ثم ضع العنوان هنا، مثال:
+        //     const API_URL = 'http://localhost:3000/api';
+        const API_URL = 'http://localhost:3000/api';
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyA6rj9jXcwy6i...",
-            authDomain: "hotel-db-affa9.firebaseapp.com",
-            projectId: "hotel-db-affa9",
-            storageBucket: "hotel-db-affa9.appspot.com",
-            messagingSenderId: "775363791894",
-            appId: "1:775363791894:web:5a383857ed18ce36947937"
+        const LS_KEY = 'hotel-local-db-v1';
+        let _mem = null;
+        function _load() {
+            if (_mem) return _mem;
+            try { _mem = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) { _mem = {}; }
+            return _mem;
+        }
+        function _save() {
+            try { localStorage.setItem(LS_KEY, JSON.stringify(_mem)); }
+            catch (e) { throw new Error('تعذر الحفظ: مساحة التخزين ممتلئة أو غير متاحة'); }
+        }
+        function _newId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+
+        // ===== سجل الحجوزات الدائم (records) =====
+        // يُكتب تلقائيًا داخل طبقة البيانات: عند إرسال أي حجز جديد، وعند تغيير حالته (قبول / رفض).
+        // لا توجد أي دالة في الموقع لحذف السجلات أو تعديلها (وكذلك في الخادم).
+        // تُحذف فقط من قاعدة البيانات مباشرة. وحذف الحجز من لوحة المدير لا يمسّ سجلاته.
+        const RECORDS_READONLY_MSG = 'سجل الحجوزات دائم: لا يُحذف ولا يُعدَّل إلا من قاعدة البيانات مباشرة';
+        const DECISION_OF = { 'مؤكد': 'مقبول', 'مرفوض': 'مرفوض', 'قيد الانتظار': 'قيد الانتظار' };
+        function makeRecord(bookingId, b, source, at) {
+            const s = (x) => (x === undefined || x === null ? '' : String(x));
+            const isOffer = b.kind === 'offer';
+            return {
+                bookingId,
+                decision: DECISION_OF[b.status] || s(b.status) || 'قيد الانتظار',
+                kind: isOffer ? 'عرض' : 'غرفة',
+                clientName: s(b.clientName), clientPhone: s(b.clientPhone),
+                roomName: s(b.roomName), roomNumber: s(b.roomNumber),
+                checkIn: s(b.checkInDate), checkOut: s(b.checkOutDate),
+                offerTitle: s(b.offerTitle),
+                residency: isOffer ? (b.isResident ? 'مقيم' : 'غير مقيم') : '',
+                priceApplied: s(b.priceApplied),
+                paymentMethod: b.paymentMethod === 'bank' ? 'تطبيق بنكي' : (b.paymentMethod === 'cash' ? 'الدفع عند الوصول' : ''),
+                bankName: s(b.bankName),
+                paid: b.paymentMethod === 'bank' ? (b.paid ? 'نعم' : 'لا') : '',
+                transport: b.transport === 'limousine' ? 'ليموزين (المطار)' : b.transport === 'taxi' ? 'تاكسي (الميناء البري)' : (b.transport === 'none' ? 'بدون' : ''),
+                transportTime: s(b.transportTime), transportRef: s(b.transportRef),
+                notes: s(b.notes),
+                bookedAt: s(b.createdAt),
+                eventAt: at || new Date().toISOString(),
+                source: source || 'مباشر'
+            };
+        }
+        // وضع المتصفح (بدون خادم): تُنقل الحجوزات الموجودة مسبقًا إلى السجل مرة واحدة فقط عند أول استخدام له
+        function _ensureRecords(m) {
+            if (m.records) return false;
+            m.records = (m.booking || []).map(b => { const { id, ...data } = b; return { id: _newId(), ...makeRecord(id, data, 'مُرحَّل', data.createdAt) }; });
+            return true;
+        }
+
+        const localBackend = {
+            async list(name) {
+                const m = _load();
+                if (name === 'records' && _ensureRecords(m)) _save();
+                return (m[name] || []).map(r => ({ ...r }));
+            },
+            async add(name, data) {
+                if (name === 'records') throw new Error(RECORDS_READONLY_MSG);
+                const m = _load(); const id = _newId();
+                if (name === 'booking') _ensureRecords(m); // قبل إضافة الحجز الجديد حتى لا يُحسب كحجز قديم
+                (m[name] = m[name] || []).push({ id, ...data });
+                if (name === 'booking') m.records.push({ id: _newId(), ...makeRecord(id, data) });
+                _save(); return id;
+            },
+            async update(name, id, patch) {
+                if (name === 'records') throw new Error(RECORDS_READONLY_MSG);
+                const m = _load(); const r = (m[name] || []).find(x => x.id === id);
+                if (!r) throw new Error('السجل غير موجود');
+                if (name === 'booking') _ensureRecords(m); // قبل التعديل
+                const oldStatus = r.status;
+                Object.assign(r, patch);
+                // تغيّرت حالة الحجز (قبول / رفض) → سجل جديد بكامل البيانات لحظة القرار
+                if (name === 'booking' && patch.status !== undefined && patch.status !== oldStatus) {
+                    const { id: _bid, ...data } = r;
+                    m.records.push({ id: _newId(), ...makeRecord(id, data) });
+                }
+                _save();
+            },
+            async remove(name, id) {
+                if (name === 'records') throw new Error(RECORDS_READONLY_MSG);
+                const m = _load(); m[name] = (m[name] || []).filter(x => x.id !== id); _save();
+            }
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        async function _api(method, path, body) {
+            const res = await fetch(API_URL + path, {
+                method,
+                headers: body ? { 'Content-Type': 'application/json' } : undefined,
+                body: body ? JSON.stringify(body) : undefined
+            });
+            if (!res.ok) { const err = new Error('API ' + res.status); err.status = res.status; throw err; }
+            return res.json();
+        }
+        const apiBackend = {
+            list: (name) => _api('GET', '/' + name),
+            add: async (name, data) => (await _api('POST', '/' + name, data)).id,
+            update: (name, id, patch) => _api('PATCH', '/' + name + '/' + id, patch),
+            remove: (name, id) => _api('DELETE', '/' + name + '/' + id)
+        };
+        // إن كان server.js قديمًا (لا يعرف جدولي الإعجابات والزيارات) نحفظهما داخل المتصفح بدل أن تتعطل الميزة
+        const FALLBACK_COLS = ['likes', 'visits'];
+        const apiBackendSafe = {};
+        ['list', 'add', 'update', 'remove'].forEach(m => {
+            apiBackendSafe[m] = async (name, ...a) => {
+                try { return await apiBackend[m](name, ...a); }
+                catch (e) {
+                    if (e.status === 404 && FALLBACK_COLS.includes(name)) {
+                        console.warn('server.js قديم: يرجى استبداله بالنسخة الجديدة لحفظ ' + name + ' في قاعدة البيانات');
+                        return localBackend[m](name, ...a);
+                    }
+                    throw e;
+                }
+            };
+        });
+        let Backend = localBackend;
+        let useApi = false;
+        // يجرب الاتصال بالخادم (قاعدة SQLite)؛ إن لم يكن يعمل يحفظ داخل المتصفح تلقائيًا
+        const ready = (async () => {
+            if (!API_URL) return;
+            try {
+                const ctl = new AbortController();
+                const t = setTimeout(() => ctl.abort(), 2000);
+                const r = await fetch(API_URL + '/booking', { cache: 'no-store', signal: ctl.signal });
+                clearTimeout(t);
+                if (r.ok) { Backend = apiBackendSafe; useApi = true; }
+            } catch (e) { console.warn('الخادم غير متاح، سيتم الحفظ داخل المتصفح'); }
+        })();
+
+        // واجهة بنفس أسماء الدوال القديمة (collection / addDoc / onSnapshot ...) حتى لا يتغير باقي الموقع
+        const db = {};
+        const _listeners = [];
+        function collection(_db, name) { return { name }; }
+        function doc(_db, name, id) { return { name, id }; }
+        function _snap(rows) {
+            return {
+                empty: rows.length === 0,
+                forEach(cb) { rows.forEach(r => { const { id, ...data } = r; cb({ id, data: () => data }); }); }
+            };
+        }
+        async function _refresh(l) {
+            try { await ready; l.ok(_snap(await Backend.list(l.name))); }
+            catch (e) { if (l.fail) l.fail(e); else console.error(e); }
+        }
+        function _notify(name) { _listeners.filter(l => l.name === name).forEach(_refresh); }
+        // السجلات تتولد تلقائيًا من الحجوزات، لذلك نحدّث قائمتها أيضًا عند أي تغيير في الحجوزات
+        function _guardRecords(c) { if (c.name === 'records') throw new Error(RECORDS_READONLY_MSG); }
+        async function addDoc(c, data) { _guardRecords(c); await ready; const id = await Backend.add(c.name, data); _notify(c.name); if (c.name === 'booking') _notify('records'); return { id }; }
+        async function updateDoc(d, patch) { _guardRecords(d); await ready; await Backend.update(d.name, d.id, patch); _notify(d.name); if (d.name === 'booking') _notify('records'); }
+        async function deleteDoc(d) { _guardRecords(d); await ready; await Backend.remove(d.name, d.id); _notify(d.name); }
+        function onSnapshot(c, ok, fail) {
+            const l = { name: c.name, ok, fail };
+            _listeners.push(l);
+            setTimeout(() => _refresh(l), 0);
+            return () => { const i = _listeners.indexOf(l); if (i >= 0) _listeners.splice(i, 1); };
+        }
+        // مزامنة بين تبويبات المتصفح (محلي) أو تحديث دوري من الخادم (API)
+        window.addEventListener('storage', (e) => { if (e.key === LS_KEY) { _mem = null; _listeners.forEach(_refresh); } });
+        setInterval(() => { if (useApi) _listeners.forEach(_refresh); }, 4000);
+        // ====================================================
 
         let selectedRoomName = '';
         let roomPricePerNight = 0;
         let globalBookings = [];
+
+        // تشغيل فيديو الخلفية (بعض المتصفحات تمنع التشغيل التلقائي حتى أول لمسة)
+        (function heroVideo() {
+            const v = document.getElementById('hero-video');
+            if (!v) return;
+            v.muted = true;
+            const go = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+            go();
+            ['click', 'touchstart', 'scroll'].forEach(ev => window.addEventListener(ev, () => { if (v.paused) go(); }, { once: true, passive: true }));
+            // تُخفى عنصر الفيديو فقط إذا فشلت كل المصادر (آخر مصدر يُجرَّب أخيرًا)، فتبقى الصورة ظاهرة
+            const srcs = v.querySelectorAll('source');
+            if (srcs.length) srcs[srcs.length - 1].addEventListener('error', () => { v.style.display = 'none'; });
+        })();
+
+        // ================== الغرف + الإعجاب + أفضل الغرف ==================
+        // لإضافة غرفة جديدة: أضف سطرًا هنا (id فريد، الاسم، السعر بالدولار، الوصف، اسم ملف الصورة).
+        // ملاحظة: اسم الغرفة هو المفتاح الذي تُحسب به الحجوزات والإعجابات، فلا تغيّره بعد بدء الحجز.
+        const ROOMS = [
+            { id: 1,  name: 'غرفة مفردة ديلوكس',     price: 50,  img: '2.jpeg', desc: 'غرفة مريحة ومجهّزة بسرير فردي واسع، إطلالة رائعة، وتكييف هواء ممتاز.' },
+            { id: 2,  name: 'غرفة مزدوجة فاخرة',     price: 85,  img: '3.jpeg', desc: 'تضم سريرين مزدوجين أو سرير كبير كوين، مثالية للأزواج والعائلات الصغيرة.' },
+            { id: 3,  name: 'جناح ملكي خاص',          price: 150, img: '4.jpeg', desc: 'جناح فاخر بمساحة واسعة، صالة جلوس مستقلة، وأعلى معايير الرفاهية والخدمة.' },
+            { id: 4,  name: 'غرفة عائلية واسعة',      price: 110, img: '5.jpeg', desc: 'غرفة رحبة تتسع لأسرة كاملة مع سريرين كبيرين ومساحة جلوس مريحة.' },
+            { id: 5,  name: 'جناح تنفيذي',            price: 130, img: '6.jpeg', desc: 'جناح أنيق لرجال الأعمال مع مكتب عمل مستقل وخدمة إنترنت سريعة.' },
+            { id: 6,  name: 'غرفة ثلاثية مريحة',      price: 70,  img: '7.jpeg', desc: 'غرفة مناسبة للأصدقاء أو العائلة الصغيرة بثلاثة أسرّة وتكييف ممتاز.' },
+            { id: 7,  name: 'غرفة مفردة اقتصادية',    price: 35,  img: '2.jpeg', desc: 'خيار اقتصادي أنيق للمسافر الفرد: سرير مريح، حمّام خاص، وتكييف.' },
+            { id: 8,  name: 'غرفة مزدوجة اقتصادية',   price: 60,  img: '3.jpeg', desc: 'سريران منفصلان بسعر مناسب، مثالية للأصدقاء وزملاء العمل.' },
+            { id: 9,  name: 'غرفة بإطلالة بحرية',     price: 95,  img: '5.jpeg', desc: 'غرفة تطل على البحر الأحمر مع شرفة خاصة لمشاهدة الغروب.' },
+            { id: 10, name: 'جناح شهر العسل',         price: 140, img: '4.jpeg', desc: 'جناح رومانسي هادئ بتجهيزات مميزة وإطلالة جميلة للعرسان.' },
+            { id: 11, name: 'غرفة رباعية للعائلات',   price: 120, img: '7.jpeg', desc: 'أربعة أسرّة ومساحة واسعة، الخيار الأمثل للعائلات الكبيرة والمجموعات.' },
+            { id: 12, name: 'جناح رئاسي',             price: 220, img: '6.jpeg', desc: 'أرقى أجنحة الفندق: غرفتا نوم وصالة استقبال وخدمة خاصة على مدار الساعة.' }
+        ];
+        // الغرفة تدخل تصنيف «أفضل الغرف» عندما يصل عدد إعجاباتها إلى هذا الحد (1 = بمجرد أول إعجاب)
+        const BEST_MIN_LIKES = 1;
+
+        function getVisitorId() {
+            try {
+                let v = localStorage.getItem('hotel-visitor-id');
+                if (!v) { v = 'v' + _newId(); localStorage.setItem('hotel-visitor-id', v); }
+                return v;
+            } catch (e) { return window.__vid || (window.__vid = 'v' + _newId()); }
+        }
+        const VISITOR_ID = getVisitorId();
+        let globalLikes = [];
+        let roomsFilter = 'all';
+        const likePending = new Set();
+
+        function renderRooms() {
+            document.getElementById('rooms-grid').innerHTML = ROOMS.map((r, i) => `
+                <div id="room-${r.id}" class="room-card bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                    <div class="room-img">
+                        <img src="${escapeHTML(r.img)}" alt="${escapeHTML(r.name)}" onerror="this.style.display='none'">
+                        <span id="best-badge-${r.id}" class="best-badge hidden">🏆 من أفضل الغرف</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-bold text-xl text-slate-900">${escapeHTML(r.name)}</h3>
+                                <span class="text-amber-600 font-black">$${r.price} / ليلة</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-4">${escapeHTML(r.desc)}</p>
+                            <div class="room-stats">
+                                <span class="stat-pill">🛎️ عدد الحجوزات: <b id="bk-count-${r.id}">0</b></span>
+                                <button id="like-btn-${r.id}" onclick="toggleLike(${i})" aria-pressed="false" title="أعجبتني هذه الغرفة" class="like-btn"><span class="like-ic">🤍</span><span class="like-n">0</span></button>
+                            </div>
+                            <div id="status-room-${r.id}" class="mb-4 text-xs font-bold p-2.5 rounded-xl bg-slate-100 text-slate-600 text-center">جاري التحقق من التوافر...</div>
+                        </div>
+                        <button id="btn-room-${r.id}" onclick="openBookingModal(ROOMS[${i}].name, ROOMS[${i}].price)" class="w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">
+                            احجز هذه الغرفة
+                        </button>
+                    </div>
+                </div>`).join('');
+        }
+
+        // عدد مرات حجز الغرفة (طلبات الحجز غير المرفوضة)
+        function roomBookingCount(name) {
+            return globalBookings.filter(b => b.kind !== 'offer' && b.roomName === name && b.status !== 'مرفوض').length;
+        }
+        // عدد الإعجابات (كل زائر يُحسب مرة واحدة فقط)
+        function roomLikeCount(name) {
+            return new Set(globalLikes.filter(l => l.room === name).map(l => l.visitorId)).size;
+        }
+
+        function updateRoomStats() {
+            const stats = ROOMS.map((r, i) => ({
+                r, i, bookings: roomBookingCount(r.name), likes: roomLikeCount(r.name),
+                mine: globalLikes.some(l => l.room === r.name && l.visitorId === VISITOR_ID)
+            }));
+            stats.forEach(({ r, bookings, likes, mine }) => {
+                document.getElementById('bk-count-' + r.id).innerText = bookings;
+                const btn = document.getElementById('like-btn-' + r.id);
+                btn.classList.toggle('liked', mine);
+                btn.setAttribute('aria-pressed', mine ? 'true' : 'false');
+                btn.querySelector('.like-ic').innerText = mine ? '❤️' : '🤍';
+                btn.querySelector('.like-n').innerText = likes;
+                document.getElementById('best-badge-' + r.id).classList.toggle('hidden', likes < BEST_MIN_LIKES);
+            });
+            // أفضل الغرف: الأكثر إعجابًا ثم الأكثر حجزًا
+            const best = stats.filter(x => x.likes >= BEST_MIN_LIKES)
+                .sort((a, b) => b.likes - a.likes || b.bookings - a.bookings || a.i - b.i);
+            const rank = new Map(best.map((x, k) => [x.r.id, k]));
+            stats.forEach(({ r, i }) => {
+                const card = document.getElementById('room-' + r.id);
+                const isBest = rank.has(r.id);
+                card.style.display = (roomsFilter === 'best' && !isBest) ? 'none' : '';
+                card.style.order = roomsFilter === 'best' ? rank.get(r.id) : i;
+            });
+            document.getElementById('rf-best-n').innerText = '(' + best.length + ')';
+            document.getElementById('best-empty').classList.toggle('hidden', !(roomsFilter === 'best' && best.length === 0));
+        }
+
+        window.setRoomsFilter = function(f) {
+            roomsFilter = f;
+            document.getElementById('rf-all').classList.toggle('on', f === 'all');
+            document.getElementById('rf-best').classList.toggle('on', f === 'best');
+            updateRoomStats();
+        }
+
+        window.toggleLike = async function(i) {
+            const r = ROOMS[i];
+            if (likePending.has(r.id)) return;
+            likePending.add(r.id);
+            const btn = document.getElementById('like-btn-' + r.id);
+            btn.disabled = true;
+            try {
+                const mine = globalLikes.filter(l => l.room === r.name && l.visitorId === VISITOR_ID);
+                if (mine.length) { for (const l of mine) await deleteDoc(doc(db, "likes", l.id)); }
+                else await addDoc(collection(db, "likes"), { room: r.name, visitorId: VISITOR_ID, createdAt: new Date().toISOString() });
+            } catch (e) {
+                console.error(e);
+                alert('تعذر حفظ الإعجاب، تحقق من التخزين أو من اتصال الخادم المحلي.');
+            } finally {
+                likePending.delete(r.id);
+                btn.disabled = false;
+            }
+        }
+
+        renderRooms();
+        onSnapshot(collection(db, "likes"), (snapshot) => {
+            globalLikes = [];
+            snapshot.forEach(d => globalLikes.push({ id: d.id, ...d.data() }));
+            updateRoomStats();
+        }, (e) => console.error('likes', e));
+
+        // ===== عدّاد زوار الموقع =====
+        // كل زائر له رمز ثابت في متصفحه؛ تُسجَّل زيارة واحدة لكل جلسة (لا تتكرر مع تحديث الصفحة).
+        // جهاز المدير لا يُحتسب بعد دخوله للوحة التحكم.
+        (function trackVisit() {
+            try {
+                if (localStorage.getItem('hotel-admin-device') === '1') return;
+                if (sessionStorage.getItem('hotel-visit-logged') === '1') return;
+                sessionStorage.setItem('hotel-visit-logged', '1');
+            } catch (e) { /* التخزين غير متاح: نسجّل الزيارة على أي حال */ }
+            addDoc(collection(db, "visits"), { visitorId: VISITOR_ID, at: new Date().toISOString() })
+                .catch(e => console.warn('تعذر تسجيل الزيارة', e));
+        })();
+        // ====================================================
+
+        function syncOptCards() {
+            document.querySelectorAll('.opt-card').forEach(l => { const i = l.querySelector('input'); l.classList.toggle('sel', !!(i && i.checked)); });
+        }
+        document.addEventListener('change', (e) => { if (e.target.closest && e.target.closest('.opt-card')) syncOptCards(); });
 
         window.openBookingModal = function(roomName, price) {
             selectedRoomName = roomName;
             roomPricePerNight = price;
             document.getElementById('modal-room-title').innerText = `الغرفة المختارة: ${roomName} ($${price} لكل ليلة)`;
             document.getElementById('booking-modal').classList.remove('hidden');
+            syncOptCards();
         }
 
         window.closeBookingModal = function() {
@@ -484,18 +948,12 @@
             document.getElementById('booking-form').reset();
             document.getElementById('bank-box').classList.add('hidden');
             document.getElementById('bank-account-info').classList.add('hidden');
+            document.getElementById('transport-box').classList.add('hidden');
+            syncOptCards();
             selectedOfferTitle = '';
         }
 
         let selectedOfferTitle = '';
-
-        window.logoFallback = function(text, color) {
-            const d = document.createElement('div');
-            d.className = 'h-9 mx-auto rounded-lg flex items-center justify-center text-white font-black text-sm';
-            d.style.background = color;
-            d.textContent = text;
-            return d;
-        }
 
         window.onPayChange = function() {
             const v = document.querySelector('input[name="pay-method"]:checked')?.value;
@@ -506,14 +964,116 @@
             }
         }
 
+        window.onTransportChange = function() {
+            const t = document.querySelector('input[name="transport"]:checked')?.value;
+            const box = document.getElementById('transport-box');
+            box.classList.toggle('hidden', t === 'none');
+            if (t === 'limousine') {
+                document.getElementById('transport-time-label').innerText = '✈️ موعد وصول طائرتك (التاريخ والوقت) *';
+                document.getElementById('transport-ref-label').innerText = 'رقم الرحلة / شركة الطيران (اختياري)';
+            } else if (t === 'taxi') {
+                document.getElementById('transport-time-label').innerText = '🚌 موعد وصول الباص إلى الميناء البري (التاريخ والوقت) *';
+                document.getElementById('transport-ref-label').innerText = 'اسم شركة الباص (اختياري)';
+            }
+        }
+
         window.onBankChange = function() {
             document.getElementById('bank-account-info').classList.remove('hidden');
         }
 
-        window.bookOffer = function(title) {
-            selectedOfferTitle = title;
-            openBookingModal('عرض: ' + title, 0);
-            document.getElementById('modal-room-title').innerText = `العرض المختار: ${title}`;
+        let currentOffer = null;
+        window.bookOffer = function(id) {
+            currentOffer = globalOffers.find(o => o.id === id);
+            if (!currentOffer) return;
+            const o = currentOffer;
+            document.getElementById('offer-modal-title').innerText = o.title;
+            document.getElementById('offer-modal-prices').innerHTML = o.oldPrice
+                ? `<div>✅ سعر المقيمين في الفندق: <b class="text-emerald-600">${escapeHTML(o.price)}</b></div><div>👤 السعر لغير المقيمين: <b>${escapeHTML(o.oldPrice)}</b></div>`
+                : `<div>السعر: <b class="text-amber-600">${escapeHTML(o.price)}</b></div>`;
+            document.getElementById('of-error').classList.add('hidden');
+            document.getElementById('offer-modal').classList.remove('hidden');
+        }
+        window.closeOfferModal = function() {
+            document.getElementById('offer-modal').classList.add('hidden');
+            ['of-name','of-phone','of-room'].forEach(i => document.getElementById(i).value = '');
+            document.querySelectorAll('input[name="of-resident"]').forEach(r => r.checked = false);
+            document.getElementById('of-room-box').classList.add('hidden');
+            currentOffer = null;
+        }
+        window.onResidentChange = function() {
+            const v = document.querySelector('input[name="of-resident"]:checked')?.value;
+            document.getElementById('of-room-box').classList.toggle('hidden', v !== 'yes');
+            document.getElementById('of-error').classList.add('hidden');
+        }
+
+        function normText(t) {
+            return String(t || '').toLowerCase().trim()
+                .replace(/[\u064B-\u0652\u0640]/g, '')
+                .replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه')
+                .replace(/\s+/g, ' ');
+        }
+        function normPhone(p) {
+            let n = String(p || '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[^\d]/g, '');
+            if (n.startsWith('00')) n = n.slice(2);
+            if (n.startsWith('249')) n = n.slice(3);
+            if (n.startsWith('0')) n = n.slice(1);
+            return n;
+        }
+        function findResidentMatch(name, phone, room) {
+            const today = new Date().toISOString().split('T')[0];
+            const r = normText(room);
+            return globalBookings.find(b =>
+                b.kind !== 'offer' && b.status === 'مؤكد' &&
+                b.checkInDate <= today && b.checkOutDate >= today &&
+                normText(b.clientName) === normText(name) &&
+                normPhone(b.clientPhone) === normPhone(phone) &&
+                r && (normText(b.roomName) === r || normText(b.roomName).includes(r) || (b.roomNumber && normText(b.roomNumber) === r))
+            );
+        }
+
+        window.submitOfferBooking = async function() {
+            if (!currentOffer) return;
+            const name = document.getElementById('of-name').value.trim();
+            const phone = document.getElementById('of-phone').value.trim();
+            const res = document.querySelector('input[name="of-resident"]:checked')?.value;
+            const room = document.getElementById('of-room').value.trim();
+            const err = document.getElementById('of-error');
+            err.classList.add('hidden');
+            if (!name || !phone) { err.innerText = 'يرجى كتابة الاسم ورقم الهاتف.'; err.classList.remove('hidden'); return; }
+            if (!res) { err.innerText = 'يرجى تحديد هل أنت مقيم في الفندق أم لا.'; err.classList.remove('hidden'); return; }
+            let match = null;
+            if (res === 'yes') {
+                if (!room) { err.innerText = 'يرجى كتابة رقم الغرفة أو نوعها.'; err.classList.remove('hidden'); return; }
+                match = findResidentMatch(name, phone, room);
+                if (!match) {
+                    err.innerText = 'لم يحدث تطابق بالاسم أو الرقم أو رقم الغرفة (نوعها)، يرجى التأكد من إدارة الفندق.';
+                    err.classList.remove('hidden');
+                    return;
+                }
+            }
+            const o = currentOffer;
+            const priceApplied = (res === 'yes' || !o.oldPrice) ? o.price : o.oldPrice;
+            const btn = document.getElementById('of-submit');
+            btn.disabled = true; btn.innerText = 'جاري الإرسال...';
+            try {
+                await addDoc(collection(db, "booking"), {
+                    kind: 'offer',
+                    offerTitle: o.title,
+                    clientName: name,
+                    clientPhone: phone,
+                    roomName: res === 'yes' ? match.roomName : '',
+                    isResident: res === 'yes',
+                    priceApplied: priceApplied,
+                    checkInDate: '', checkOutDate: '',
+                    notes: '', status: 'قيد الانتظار',
+                    createdAt: new Date().toISOString()
+                });
+                alert(`تم تسجيل حجزك في العرض: ${o.title}\nالسعر المطبق: ${priceApplied}`);
+                closeOfferModal();
+            } catch (e) {
+                console.error(e);
+                alert('حدث خطأ أثناء إرسال الحجز.');
+            } finally { btn.disabled = false; btn.innerText = 'تأكيد الحجز'; }
         }
 
         // ===== التعليقات والتقييم =====
@@ -601,7 +1161,7 @@
                 alert('شكراً لك! تم نشر تعليقك.');
             } catch (error) {
                 console.error("خطأ في حفظ التعليق:", error);
-                alert('تعذر إرسال التعليق، تحقق من قواعد Firebase (Firestore Rules) لمجموعة reviews.');
+                alert('تعذر إرسال التعليق، تحقق من التخزين أو من اتصال الخادم المحلي.');
             } finally {
                 btn.innerText = 'إرسال التعليق';
                 btn.disabled = false;
@@ -623,7 +1183,7 @@
             renderReviews();
         }, (error) => {
             console.error("خطأ في تحميل التعليقات:", error);
-            document.getElementById('reviews-list').innerHTML = '<p class="text-center text-red-500">تعذر تحميل التعليقات، تحقق من قواعد Firebase.</p>';
+            document.getElementById('reviews-list').innerHTML = '<p class="text-center text-red-500">تعذر تحميل التعليقات.</p>';
         });
 
         // ===== المنيو =====
@@ -673,7 +1233,10 @@
             if(pass === '2017' || pass === '2018') {
                 closeAdminLogin();
                 isAdminLogged = true;
+                try { localStorage.setItem('hotel-admin-device', '1'); } catch (e) {}
                 renderReviews();
+                showAdminTab('bookings');
+                startRecordsFeed();
                 document.getElementById('admin-dashboard').classList.remove('hidden');
                 window.scrollTo({ top: document.getElementById('admin-dashboard').offsetTop, behavior: 'smooth' });
             } else {
@@ -683,20 +1246,240 @@
 
         window.logoutAdmin = function() {
             isAdminLogged = false;
+            stopRecordsFeed();
             renderReviews();
             document.getElementById('admin-dashboard').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // ===== تبويبات لوحة المدير + صفحة سجل الحجوزات =====
+        window.showAdminTab = function(tab) {
+            const on = 'admin-tab bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition shadow';
+            const off = 'admin-tab bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm transition';
+            ['bookings', 'customers', 'records'].forEach(t => {
+                document.getElementById('admin-tab-' + t).classList.toggle('hidden', t !== tab);
+                document.getElementById('tab-btn-' + t).className = t === tab ? on : off;
+            });
+        }
+
+        let globalRecords = [];
+        let recordsUnsub = null;
+        let recordsLimit = 100;
+
+        // لا تُحمَّل السجلات إلا بعد دخول المدير، وتتوقف عند تسجيل الخروج
+        let globalVisits = [];
+        let visitsUnsub = null;
+        function startRecordsFeed() {
+            if (!visitsUnsub) {
+                visitsUnsub = onSnapshot(collection(db, "visits"), (snapshot) => {
+                    globalVisits = [];
+                    snapshot.forEach(d => globalVisits.push({ id: d.id, ...d.data() }));
+                    renderCustomers();
+                }, (e) => console.error('visits', e));
+            }
+            if (recordsUnsub) return;
+            recordsUnsub = onSnapshot(collection(db, "records"), (snapshot) => {
+                globalRecords = [];
+                snapshot.forEach(d => globalRecords.push({ id: d.id, ...d.data() }));
+                renderRecords();
+                renderCustomers();
+            }, (error) => {
+                console.error("خطأ في تحميل السجلات:", error);
+                document.getElementById('records-table-body').innerHTML =
+                    '<tr><td colspan="10" class="text-center py-6 text-red-500">تعذر تحميل سجل الحجوزات.</td></tr>';
+            });
+        }
+        function stopRecordsFeed() {
+            if (recordsUnsub) { recordsUnsub(); recordsUnsub = null; }
+            if (visitsUnsub) { visitsUnsub(); visitsUnsub = null; }
+            globalRecords = [];
+            globalVisits = [];
+            const tb = document.getElementById('records-table-body');
+            if (tb) tb.innerHTML = '';
+            ['vip-table-body', 'customers-table-body'].forEach(id => { const e = document.getElementById(id); if (e) e.innerHTML = ''; });
+        }
+
+        // ===== تقرير العملاء =====
+        // يُبنى من سجل الحجوزات الدائم، فلا يتأثر بحذف الحجز من لوحة المدير، ولا يتكرر العميل.
+        const VIP_MIN_BOOKINGS = 3; // «أكثر من مرتين» = 3 حجوزات فأكثر
+        function customerKey(name, phone) {
+            const p = normPhone(phone);
+            return p.length >= 7 ? 'p' + p : 'n' + normText(name);
+        }
+        function buildCustomers() {
+            // 1) آخر حالة لكل حجز (السجلات مرتبة من الأقدم للأحدث)
+            const bookings = new Map();
+            globalRecords.forEach(r => {
+                const b = bookings.get(r.bookingId) || {
+                    key: customerKey(r.clientName, r.clientPhone),
+                    label: r.kind === 'عرض' ? '🎁 ' + (r.offerTitle || 'عرض') : (r.roomName || 'غرفة'),
+                    time: r.bookedAt || r.eventAt || ''
+                };
+                b.name = r.clientName; b.phone = r.clientPhone; b.decision = r.decision;
+                bookings.set(r.bookingId, b);
+            });
+            // 2) تجميع الحجوزات لكل عميل
+            const map = new Map();
+            bookings.forEach(b => {
+                let c = map.get(b.key);
+                if (!c) { c = { key: b.key, name: '', phone: '', count: 0, confirmed: 0, first: b.time, last: '', items: {} }; map.set(b.key, c); }
+                c.name = b.name || c.name; c.phone = b.phone || c.phone;
+                c.count++;
+                if (b.decision === 'مقبول') c.confirmed++;
+                if (b.time && (!c.first || b.time < c.first)) c.first = b.time;
+                if (b.time > c.last) c.last = b.time;
+                c.items[b.label] = (c.items[b.label] || 0) + 1;
+            });
+            // ترتيب تصاعدي حسب عدد مرات الحجز
+            return [...map.values()].sort((a, b) => a.count - b.count || String(a.first).localeCompare(String(b.first)));
+        }
+        function custItemsHTML(items) {
+            return Object.entries(items).map(([k, n]) => escapeHTML(k) + (n > 1 ? ` <span class="text-slate-500">×${n}</span>` : '')).join('<br>');
+        }
+        function renderCustomers() {
+            const tbody = document.getElementById('customers-table-body');
+            if (!tbody) return;
+            const all = buildCustomers();
+            const vips = all.filter(c => c.count >= VIP_MIN_BOOKINGS);
+
+            // إحصائيات الزوار
+            const today = new Date().toDateString();
+            const visitors = new Set(globalVisits.map(v => v.visitorId));
+            const todayVisits = globalVisits.filter(v => new Date(v.at).toDateString() === today);
+            const todayVisitors = new Set(todayVisits.map(v => v.visitorId));
+            document.getElementById('cs-visitors').innerText = visitors.size;
+            document.getElementById('cs-visitors-today').innerText = 'اليوم: ' + todayVisitors.size;
+            document.getElementById('cs-visits').innerText = globalVisits.length;
+            document.getElementById('cs-visits-today').innerText = 'اليوم: ' + todayVisits.length;
+            document.getElementById('cs-customers').innerText = all.length;
+            document.getElementById('cs-conv').innerText = visitors.size ? 'نسبة الحجز من الزوار: ' + Math.min(100, Math.round(all.length / visitors.size * 100)) + '%' : '';
+            document.getElementById('cs-vip').innerText = vips.length;
+
+            // البحث
+            const term = normText(document.getElementById('cust-search').value);
+            const digits = normPhone(document.getElementById('cust-search').value);
+            const match = (c) => !term || normText(c.name).includes(term) || (digits.length >= 3 && normPhone(c.phone).includes(digits));
+            const row = (c, i, withClass) => {
+                const vip = c.count >= VIP_MIN_BOOKINGS;
+                return `<tr>
+                    <td class="p-2.5 text-slate-500">${i + 1}</td>
+                    <td class="p-2.5 font-bold text-slate-900 rec-name">${vip ? '⭐ ' : ''}${escapeHTML(c.name)}</td>
+                    <td class="p-2.5 text-slate-700" dir="ltr" style="text-align:right">${escapeHTML(c.phone)}</td>
+                    <td class="p-2.5"><span class="cnt-badge${vip ? ' vip' : ''}">${c.count}</span></td>
+                    <td class="p-2.5 text-emerald-700 font-bold">${c.confirmed}</td>
+                    <td class="p-2.5 rec-wrap text-xs text-slate-600">${custItemsHTML(c.items)}</td>
+                    <td class="p-2.5 text-xs text-slate-600"><span dir="ltr">${escapeHTML(fmtDateTime(c.last))}</span></td>
+                    ${withClass ? `<td class="p-2.5">${vip ? '<span class="vip-badge">⭐ عميل مميز</span>' : '<span class="text-slate-500 text-xs">عميل</span>'}</td>` : ''}
+                </tr>`;
+            };
+            const vShown = vips.filter(match), aShown = all.filter(match);
+            document.getElementById('vip-table-body').innerHTML = vShown.length
+                ? vShown.map((c, i) => row(c, i, false)).join('')
+                : `<tr><td colspan="7" class="text-center py-6 text-slate-400">${vips.length ? 'لا توجد نتائج مطابقة.' : 'لا يوجد عملاء مميزون بعد. يظهر هنا من يحجز أكثر من مرتين.'}</td></tr>`;
+            tbody.innerHTML = aShown.length
+                ? aShown.map((c, i) => row(c, i, true)).join('')
+                : `<tr><td colspan="8" class="text-center py-6 text-slate-400">${all.length ? 'لا توجد نتائج مطابقة.' : 'لا يوجد عملاء بعد. يُحفظ اسم كل شخص يقوم بالحجز هنا تلقائيًا.'}</td></tr>`;
+            document.getElementById('cust-footer').innerText = `عدد العملاء: ${all.length} — المميزون: ${vips.length}`;
+        }
+
+        window.onRecFilter = function() { recordsLimit = 100; renderRecords(); }
+        window.recShowMore = function() { recordsLimit += 100; renderRecords(); }
+
+        function recDecisionBadge(d) {
+            if (d === 'مقبول') return '<span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-xs font-bold">مقبول ✔</span>';
+            if (d === 'مرفوض') return '<span class="bg-red-100 text-red-800 px-2.5 py-1 rounded-full text-xs font-bold">مرفوض ✖</span>';
+            return '<span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-xs font-bold">طلب جديد</span>';
+        }
+        function fmtDateTime(iso) {
+            if (!iso) return '';
+            const d = new Date(iso);
+            if (isNaN(d)) return String(iso);
+            const p = (n) => String(n).padStart(2, '0');
+            return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+        }
+
+        function renderRecords() {
+            const tbody = document.getElementById('records-table-body');
+            if (!tbody) return;
+
+            // الإحصائيات: آخر قرار لكل حجز
+            const latest = new Map();
+            globalRecords.forEach((r, idx) => { r._seq = idx + 1; latest.set(r.bookingId, r.decision); });
+            let accepted = 0, rejected = 0, pending = 0;
+            latest.forEach(d => { if (d === 'مقبول') accepted++; else if (d === 'مرفوض') rejected++; else pending++; });
+            document.getElementById('rec-stat-total').innerText = latest.size;
+            document.getElementById('rec-stat-accepted').innerText = accepted;
+            document.getElementById('rec-stat-rejected').innerText = rejected;
+            document.getElementById('rec-stat-pending').innerText = pending;
+
+            // التصفية والبحث
+            const decision = document.getElementById('rec-filter').value;
+            const term = normText(document.getElementById('rec-search').value);
+            const digits = normPhone(document.getElementById('rec-search').value);
+            const rows = globalRecords.filter(r => {
+                if (decision && r.decision !== decision) return false;
+                if (!term) return true;
+                const hay = normText([r.clientName, r.roomName, r.roomNumber, r.offerTitle].join(' '));
+                return hay.includes(term) || (digits.length >= 3 && normPhone(r.clientPhone).includes(digits));
+            }).reverse(); // الأحدث أولاً
+
+            const total = globalRecords.length;
+            if (rows.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="10" class="text-center py-6 text-slate-400">${total ? 'لا توجد سجلات مطابقة للبحث.' : 'لا توجد سجلات بعد. ستظهر هنا تلقائيًا مع أول حجز.'}</td></tr>`;
+                document.getElementById('rec-footer').innerHTML = '';
+                return;
+            }
+
+            const shown = rows.slice(0, recordsLimit);
+            tbody.innerHTML = shown.map((r) => {
+                const isOffer = r.kind === 'عرض';
+                const num = typeof r.id === 'number' ? r.id : r._seq; // رقم السجل في القاعدة (أو ترتيبه في وضع المتصفح)
+                const migrated = r.source === 'مُرحَّل'
+                    ? `<div class="text-[10px] text-slate-500" title="حجز قديم نُقل إلى السجل عند تفعيله؛ الوقت المعروض هو وقت إرسال الحجز وليس بالضرورة وقت القرار">(مُرحَّل)</div>` : '';
+                const bookedLine = (r.source !== 'مُرحَّل' && r.bookedAt && fmtDateTime(r.bookedAt) !== fmtDateTime(r.eventAt))
+                    ? `<div class="text-[10px] text-slate-500">طُلب في <span dir="ltr">${escapeHTML(fmtDateTime(r.bookedAt))}</span></div>` : '';
+                const target = isOffer
+                    ? `<div class="text-xs text-amber-700 font-bold">🎁 حجز عرض</div>
+                       <div class="font-semibold text-slate-700">${escapeHTML(r.offerTitle)}</div>
+                       <div class="text-xs text-slate-500">${escapeHTML(r.residency)}${r.priceApplied ? ' — ' + escapeHTML(r.priceApplied) : ''}${r.roomName ? ' — ' + escapeHTML(r.roomName) : ''}</div>`
+                    : `<div class="text-xs text-slate-500">🛏️ حجز غرفة</div>
+                       <div class="font-semibold text-slate-700">${escapeHTML(r.roomName)}</div>
+                       ${r.roomNumber ? `<div class="text-xs text-slate-500">رقم الغرفة: ${escapeHTML(r.roomNumber)}</div>` : ''}`;
+                const stay = (r.checkIn || r.checkOut)
+                    ? `<div>الوصول: <span dir="ltr">${escapeHTML(r.checkIn) || '—'}</span></div><div>المغادرة: <span dir="ltr">${escapeHTML(r.checkOut) || '—'}</span></div>`
+                    : '<span class="text-slate-400">—</span>';
+                const pay = r.paymentMethod
+                    ? `<div>${r.paymentMethod === 'تطبيق بنكي' ? '🏦' : '💵'} ${escapeHTML(r.paymentMethod)}</div>
+                       ${r.bankName ? `<div class="text-xs text-slate-500">${escapeHTML(r.bankName)}</div>` : ''}
+                       ${r.paid ? `<div class="text-xs ${r.paid === 'نعم' ? 'text-emerald-600' : 'text-red-600'} font-bold">${r.paid === 'نعم' ? 'تم تأكيد الدفع ✔' : 'الدفع غير مؤكد'}</div>` : ''}`
+                    : '<span class="text-slate-400">—</span>';
+                const transport = (r.transport && r.transport !== 'بدون')
+                    ? `<div>${r.transport === 'ليموزين (المطار)' ? '🚘' : '🚕'} ${escapeHTML(r.transport)}</div>
+                       ${r.transportTime ? `<div class="text-xs text-slate-500" dir="ltr">${escapeHTML(r.transportTime.replace('T', ' '))}</div>` : ''}
+                       ${r.transportRef ? `<div class="text-xs text-slate-500">${escapeHTML(r.transportRef)}</div>` : ''}`
+                    : '<span class="text-slate-400">—</span>';
+                return `
+                    <tr>
+                        <td class="p-2.5 text-slate-500">${escapeHTML(num)}</td>
+                        <td class="p-2.5">${recDecisionBadge(r.decision)}</td>
+                        <td class="p-2.5 text-xs text-slate-600"><div dir="ltr" class="text-right">${escapeHTML(fmtDateTime(r.eventAt))}</div>${bookedLine}${migrated}</td>
+                        <td class="p-2.5 font-bold text-slate-900 rec-name">${escapeHTML(r.clientName)}</td>
+                        <td class="p-2.5 text-slate-700" dir="ltr" style="text-align:right">${escapeHTML(r.clientPhone)}</td>
+                        <td class="p-2.5 rec-wrap">${target}</td>
+                        <td class="p-2.5 text-xs text-slate-600">${stay}</td>
+                        <td class="p-2.5 rec-wrap">${pay}</td>
+                        <td class="p-2.5 rec-wrap">${transport}</td>
+                        <td class="p-2.5 rec-notes text-slate-600">${escapeHTML(r.notes) || '<span class="text-slate-400">—</span>'}</td>
+                    </tr>`;
+            }).join('');
+
+            document.getElementById('rec-footer').innerHTML =
+                `عرض ${shown.length} من ${rows.length} سجل` + (rows.length !== total ? ` (إجمالي السجلات ${total})` : '') +
+                (rows.length > shown.length ? ` <button onclick="recShowMore()" style="margin-right:.5rem" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold px-4 py-2 rounded-xl text-xs transition">عرض المزيد</button>` : '');
+        }
+
         function checkRoomAvailabilityAndUI(bookingsList) {
-            const rooms = [
-                { name: 'غرفة مفردة ديلوكس', btnId: 'btn-room-1', statusId: 'status-room-1' },
-                { name: 'غرفة مزدوجة فاخرة', btnId: 'btn-room-2', statusId: 'status-room-2' },
-                { name: 'جناح ملكي خاص', btnId: 'btn-room-3', statusId: 'status-room-3' },
-                { name: 'غرفة عائلية واسعة', btnId: 'btn-room-4', statusId: 'status-room-4' },
-                { name: 'جناح تنفيذي', btnId: 'btn-room-5', statusId: 'status-room-5' },
-                { name: 'غرفة ثلاثية مريحة', btnId: 'btn-room-6', statusId: 'status-room-6' }
-            ];
+            const rooms = ROOMS.map(r => ({ name: r.name, btnId: 'btn-room-' + r.id, statusId: 'status-room-' + r.id }));
 
             const today = new Date().toISOString().split('T')[0];
 
@@ -751,6 +1534,9 @@
             const payMethod = document.querySelector('input[name="pay-method"]:checked')?.value;
             const bankName = document.querySelector('input[name="bank-name"]:checked')?.value || '';
             const transport = document.querySelector('input[name="transport"]:checked')?.value || 'none';
+            const transportTime = document.getElementById('transport-time').value;
+            const transportRef = document.getElementById('transport-ref').value.trim();
+            if (transport !== 'none' && !transportTime) { alert('يرجى تحديد موعد وصول ' + (transport === 'limousine' ? 'الطائرة' : 'الباص') + ' ليتم إرسال ' + (transport === 'limousine' ? 'الليموزين' : 'التاكسي') + ' في الوقت المناسب.'); return; }
             if (!payMethod) { alert('يرجى اختيار طريقة الدفع.'); return; }
             if (payMethod === 'bank' && !bankName) { alert('يرجى اختيار أحد البنوك / التطبيقات البنكية.'); return; }
 
@@ -786,7 +1572,9 @@
                     bankName: payMethod === 'bank' ? bankName : '',
                     paid: false,
                     transport: transport,
-                    offerTitle: selectedOfferTitle,
+                    transportTime: transport !== 'none' ? transportTime : '',
+                    transportRef: transport !== 'none' ? transportRef : '',
+                    kind: 'room',
                     createdAt: new Date().toISOString()
                 });
 
@@ -798,7 +1586,7 @@
                 closeBookingModal();
             } catch (error) {
                 console.error("خطأ في حفظ الحجز: ", error);
-                alert('حدث خطأ أثناء إرسال الحجز، يرجى ضبط قواعد أمان Firebase (Firestore Rules).');
+                alert('حدث خطأ أثناء حفظ الحجز، تحقق من التخزين أو من اتصال الخادم المحلي.');
             } finally {
                 submitBtn.innerText = 'إرسال الحجز';
                 submitBtn.disabled = false;
@@ -842,13 +1630,12 @@
                             <div class="font-bold text-slate-900">${warnIcon}${escapeHTML(data.clientName || '')}</div>
                             <div class="text-xs text-slate-500" dir="ltr">${escapeHTML(data.clientPhone || '')}</div>
                             <div class="text-xs mt-1">${payLabel}</div>
-                            ${trLabel ? `<div class="text-xs">${trLabel}</div>` : ''}
+                            ${trLabel ? `<div class="text-xs">${trLabel}${data.transportTime ? ' — ' + escapeHTML(data.transportTime.replace('T',' ')) : ''}${data.transportRef ? ' (' + escapeHTML(data.transportRef) + ')' : ''}</div>` : ''}
                             ${data.offerTitle ? `<div class="text-xs text-amber-700">🎁 ${escapeHTML(data.offerTitle)}</div>` : ''}
                         </td>
-                        <td class="p-3 font-semibold text-slate-700">${data.roomName || ''}</td>
+                        <td class="p-3 font-semibold text-slate-700">${data.kind === 'offer' ? `🎁 عرض<div class="text-xs font-normal">${data.isResident ? 'مقيم' : 'من خارج الفندق'} — ${escapeHTML(data.priceApplied || '')}</div>` : ''}${escapeHTML(data.roomName || '')}${data.kind !== 'offer' ? `<div class="mt-1 flex gap-1"><input id="rn-${id}" value="${escapeHTML(data.roomNumber || '')}" placeholder="رقم الغرفة" class="w-20 border border-slate-300 rounded px-1 py-0.5 text-xs font-normal"><button onclick="saveRoomNumber('${id}')" class="bg-slate-700 text-white px-2 rounded text-xs">حفظ</button></div>` : ''}</td>
                         <td class="p-3 text-xs text-slate-600">
-                            <div>الوصول: ${data.checkInDate || ''}</div>
-                            <div>المغادرة: ${data.checkOutDate || ''}</div>
+                            ${data.kind === 'offer' ? `<div>${escapeHTML(data.offerTitle || '')}</div>` : `<div>الوصول: ${data.checkInDate || ''}</div><div>المغادرة: ${data.checkOutDate || ''}</div>`}
                         </td>
                         <td class="p-3">${statusBadge}</td>
                         <td class="p-3 text-center space-x-1 space-x-reverse">
@@ -867,6 +1654,7 @@
             document.getElementById('stat-confirmed').innerText = confirmed;
 
             checkRoomAvailabilityAndUI(globalBookings);
+            updateRoomStats();
         });
 
         function normalizeWhatsAppNumber(raw) {
@@ -881,7 +1669,9 @@
 
             // فتح الواتساب مباشرة عند الضغط (قبل أي عملية انتظار) حتى لا يحظره المتصفح
             if (newStatus === 'مؤكد' && booking) {
-                const msg = `السلام عليكم ${booking.clientName}،\n` +
+                const msg = booking.kind === 'offer'
+                    ? `السلام عليكم ${booking.clientName}،\nيسعدنا إبلاغكم بتأكيد حجزكم في العرض: ${booking.offerTitle} ✅\n💰 السعر: ${booking.priceApplied}\n\nنتشرف بخدمتكم.`
+                    : `السلام عليكم ${booking.clientName}،\n` +
                     `يسعدنا إبلاغكم بتأكيد حجزكم في فندق المدينة - بورتسودان ✅\n\n` +
                     `🛏️ الغرفة: ${booking.roomName}\n` +
                     `📅 الوصول: ${booking.checkInDate}\n` +
@@ -896,8 +1686,14 @@
                 await updateDoc(doc(db, "booking", id), { status: newStatus });
             } catch (error) {
                 console.error("خطأ في التحديث:", error);
-                alert('تعذر تحديث حالة الحجز، تحقق من قواعد Firebase.');
+                alert('تعذر تحديث حالة الحجز.');
             }
+        }
+
+        window.saveRoomNumber = async function(id) {
+            const v = document.getElementById('rn-' + id).value.trim();
+            try { await updateDoc(doc(db, "booking", id), { roomNumber: v }); }
+            catch (e) { console.error(e); alert('تعذر حفظ رقم الغرفة.'); }
         }
 
         window.markPaid = async function(id) {
@@ -922,13 +1718,15 @@
                             <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-1 rounded-full">${escapeHTML(o.type)}</span>
                             <h3 class="font-bold text-xl text-slate-900 mt-2">${escapeHTML(o.title)}</h3>
                             <p class="text-slate-600 text-sm my-2 whitespace-pre-line">${escapeHTML(o.description)}</p>
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-amber-600 font-black text-lg">${escapeHTML(o.price)}</span>
-                                ${o.oldPrice ? `<span class="text-slate-400 line-through text-sm">${escapeHTML(o.oldPrice)}</span>` : ''}
-                            </div>
+                            ${o.oldPrice
+                                ? `<div class="text-sm space-y-1 mb-1">
+                                     <div>✅ للمقيمين في الفندق: <span class="text-emerald-600 font-black text-lg">${escapeHTML(o.price)}</span></div>
+                                     <div class="text-slate-500">👤 لغير المقيمين: <span class="font-bold">${escapeHTML(o.oldPrice)}</span></div>
+                                   </div>`
+                                : `<div class="mb-1"><span class="text-amber-600 font-black text-lg">${escapeHTML(o.price)}</span></div>`}
                             ${o.until ? `<p class="text-xs text-red-500 font-bold">ينتهي العرض: ${escapeHTML(o.until)}</p>` : ''}
                         </div>
-                        <button data-title="${escapeHTML(o.title)}" onclick="bookOffer(this.dataset.title)" class="mt-4 w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">احجز هذا العرض</button>
+                        <button onclick="bookOffer('${o.id}')" class="mt-4 w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">احجز هذا العرض</button>
                     </div>
                 </div>`).join('');
             const list = document.getElementById('admin-offers-list');
@@ -946,7 +1744,7 @@
             renderOffers();
         }, (err) => {
             console.error('offers', err);
-            document.getElementById('offers-grid').innerHTML = '<p class="text-center text-red-500 md:col-span-3">تعذر تحميل العروض: ' + escapeHTML(err.code || err.message) + ' — تأكد من نشر قواعد Firestore لمجموعة offers.</p>';
+            document.getElementById('offers-grid').innerHTML = '<p class="text-center text-red-500 md:col-span-3">تعذر تحميل العروض: ' + escapeHTML(err.code || err.message) + '</p>';
         });
 
         function resizeImage(file, maxW = 700) {
@@ -987,7 +1785,7 @@
                 ['offer-title','offer-price','offer-old-price','offer-until','offer-desc','offer-image'].forEach(i => document.getElementById(i).value = '');
             } catch (e) {
                 console.error(e);
-                alert('تعذر نشر العرض، تحقق من قواعد Firebase لمجموعة offers.');
+                alert('تعذر نشر العرض (قد تكون الصورة كبيرة والتخزين ممتلئاً).');
             } finally { btn.disabled = false; btn.innerText = 'نشر العرض'; }
         }
 
@@ -998,7 +1796,7 @@
         }
 
         window.deleteBooking = async function(id) {
-            if(confirm('هل أنت متأكد من حذف الحجز؟')) {
+            if(confirm('هل أنت متأكد من حذف الحجز؟\n(سيبقى سجله محفوظًا في سجل الحجوزات)')) {
                 try {
                     await deleteDoc(doc(db, "booking", id));
                 } catch (error) {
