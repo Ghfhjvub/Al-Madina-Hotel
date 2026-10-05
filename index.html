@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فندق المدينة - بورتسودان</title>
-    <!-- Tailwind مُجمَّع محلياً (يعمل بدون إنترنت) -->
-    <link rel="stylesheet" href="css/tailwind.css">
+    <!-- خط Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- تنسيق Tailwind مُدمج داخل الملف (لا حاجة لأي ملف css خارجي) -->
+    <style>
+/* احتياط للمتصفحات القديمة التي لا تعرف الخاصية inset */
+.inset-0{top:0;right:0;bottom:0;left:0}
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.top-0{top:0}.z-50{z-index:50}.z-\[60\]{z-index:60}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:.5rem;margin-bottom:.5rem}.mb-1{margin-bottom:.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:.25rem}.mt-1{margin-top:.25rem}.mt-16{margin-top:4rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-11{height:2.75rem}.h-4{height:1rem}.h-48{height:12rem}.h-5{height:1.25rem}.h-56{height:14rem}.h-6{height:1.5rem}.h-9{height:2.25rem}.max-h-\[90vh\]{max-height:90vh}.max-h-\[92vh\]{max-height:92vh}.w-1\/2{width:50%}.w-11{width:2.75rem}.w-20{width:5rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-9{width:2.25rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.border-collapse{border-collapse:collapse}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.select-all{-webkit-user-select:all;-moz-user-select:all;user-select:all}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-1>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.25rem*var(--tw-space-x-reverse));margin-left:calc(.25rem*(1 - var(--tw-space-x-reverse)))}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}.space-x-reverse>:not([hidden])~:not([hidden]){--tw-space-x-reverse:1}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-slate-100>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(241 245 249/var(--tw-divide-opacity,1))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.whitespace-pre-line{white-space:pre-line}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.rounded-l-xl{border-top-left-radius:.75rem;border-bottom-left-radius:.75rem}.rounded-r-xl{border-top-right-radius:.75rem;border-bottom-right-radius:.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138/var(--tw-border-opacity,1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208/var(--tw-border-opacity,1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202/var(--tw-border-opacity,1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249/var(--tw-border-opacity,1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59/var(--tw-border-opacity,1))}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235/var(--tw-bg-opacity,1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11/var(--tw-bg-opacity,1))}.bg-amber-500\/20{background-color:rgba(245,158,11,.2)}.bg-amber-600{--tw-bg-opacity:1;background-color:rgb(217 119 6/var(--tw-bg-opacity,1))}.bg-black\/60{background-color:rgba(0,0,0,.6)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229/var(--tw-bg-opacity,1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245/var(--tw-bg-opacity,1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226/var(--tw-bg-opacity,1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68/var(--tw-bg-opacity,1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38/var(--tw-bg-opacity,1))}.bg-sky-600{--tw-bg-opacity:1;background-color:rgb(2 132 199/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.bg-slate-300{--tw-bg-opacity:1;background-color:rgb(203 213 225/var(--tw-bg-opacity,1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-amber-400{--tw-gradient-from:#fbbf24 var(--tw-gradient-from-position);--tw-gradient-to:rgba(251,191,36,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-orange-500{--tw-gradient-to:#f97316 var(--tw-gradient-to-position)}.bg-cover{background-size:cover}.bg-center{background-position:50%}.object-contain{-o-object-fit:contain;object-fit:contain}.object-cover{-o-object-fit:cover;object-fit:cover}.p-2{padding:.5rem}.p-2\.5{padding:.625rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-8{padding-left:2rem;padding-right:2rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-6{padding-bottom:1.5rem}.pt-1{padding-top:.25rem}.pt-2{padding-top:.5rem}.pt-4{padding-top:1rem}.pt-5{padding-top:1.25rem}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.text-\[10px\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-normal{font-weight:400}.font-semibold{font-weight:600}.leading-7{line-height:1.75rem}.tracking-tight{letter-spacing:-.025em}.tracking-widest{letter-spacing:.1em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77/var(--tw-text-opacity,1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.text-amber-500{--tw-text-opacity:1;color:rgb(245 158 11/var(--tw-text-opacity,1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9/var(--tw-text-opacity,1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14/var(--tw-text-opacity,1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105/var(--tw-text-opacity,1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87/var(--tw-text-opacity,1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70/var(--tw-text-opacity,1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28/var(--tw-text-opacity,1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.text-slate-950{--tw-text-opacity:1;color:rgb(2 6 23/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-35{opacity:.35}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color)}.shadow,.shadow-2xl{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-lg,.shadow-md{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\:scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-amber-500:hover{--tw-bg-opacity:1;background-color:rgb(245 158 11/var(--tw-bg-opacity,1))}.hover\:bg-amber-600:hover{--tw-bg-opacity:1;background-color:rgb(217 119 6/var(--tw-bg-opacity,1))}.hover\:bg-amber-700:hover{--tw-bg-opacity:1;background-color:rgb(180 83 9/var(--tw-bg-opacity,1))}.hover\:bg-emerald-600:hover{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87/var(--tw-bg-opacity,1))}.hover\:bg-red-600:hover{--tw-bg-opacity:1;background-color:rgb(220 38 38/var(--tw-bg-opacity,1))}.hover\:bg-red-700:hover{--tw-bg-opacity:1;background-color:rgb(185 28 28/var(--tw-bg-opacity,1))}.hover\:bg-sky-700:hover{--tw-bg-opacity:1;background-color:rgb(3 105 161/var(--tw-bg-opacity,1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.hover\:bg-slate-300:hover{--tw-bg-opacity:1;background-color:rgb(203 213 225/var(--tw-bg-opacity,1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.hover\:text-amber-400:hover{--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.hover\:text-slate-950:hover{--tw-text-opacity:1;color:rgb(2 6 23/var(--tw-text-opacity,1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\:ring-amber-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(245 158 11/var(--tw-ring-opacity,1))}.peer:checked~.peer-checked\:ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.peer:checked~.peer-checked\:ring-amber-500{--tw-ring-opacity:1;--tw-ring-color:rgb(245 158 11/var(--tw-ring-opacity,1))}@media (min-width:640px){.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:768px){.md\:col-span-2{grid-column:span 2/span 2}.md\:col-span-3{grid-column:span 3/span 3}.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:p-8{padding:2rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}
+/* أصناف ناقصة في ملف Tailwind الأصلي */
+.h-full{height:100%}
+.bg-sky-50{background-color:#f0f9ff}
+.border-sky-200{border-color:#bae6fd}
+    </style>
     <script>
         // يجب أن تكون في الـ head لأن صور الشعارات قد تفشل قبل تحميل باقي الكود
         window.logoFallback = function(text, color) {
@@ -17,8 +29,9 @@
         };
     </script>
     <style>
-        /* خط Cairo محلي: ضع الملف fonts/Cairo.woff2 (اختياري). وإن لم يوجد يُستخدم خط النظام */
-        @font-face { font-family: 'Cairo'; src: local('Cairo'), url('fonts/Cairo.woff2') format('woff2'); font-weight: 200 900; font-display: swap; }
+        /* خلفية الفيديو في الواجهة: تملأ القسم كاملاً في الكمبيوتر والهاتف (بدون الاعتماد على h-full / inset) */
+        .hero-bg { position:absolute; top:0; right:0; bottom:0; left:0; opacity:.35; overflow:hidden; background-size:cover; background-position:center; }
+        #hero-video { position:absolute; top:0; left:0; width:100%; height:100%; min-width:100%; min-height:100%; object-fit:cover; object-position:center; display:block; pointer-events:none; }
         body { font-family: 'Cairo', Tahoma, 'Segoe UI', Arial, sans-serif; }
         body, .dark-t { transition: background-color .3s, color .3s; }
         body.dark { background:#0b1220; color:#e2e8f0; }
@@ -122,12 +135,11 @@
 
     <!-- Hero Section -->
     <section class="relative bg-slate-900 text-white py-24 px-4 overflow-hidden">
-        <!-- خلفية فيديو: ضع ملف الفيديو بجانب index.html باسم hero.mp4 (يمكن إضافة hero.webm أيضًا).
+        <!-- خلفية فيديو: ضع ملف الفيديو بجانب index.html باسم hero.mp4
              إن لم يوجد الفيديو أو تعذّر تشغيله تظهر الصورة 1.jpeg تلقائيًا. -->
-        <div class="absolute inset-0 opacity-35 bg-cover bg-center overflow-hidden" style="background-image: url('1.jpeg');">
-            <video id="hero-video" class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto" poster="1.jpeg" aria-hidden="true">
+        <div class="hero-bg" style="background-image: url('1.jpeg');">
+            <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="1.jpeg" disablepictureinpicture disableremoteplayback tabindex="-1" aria-hidden="true">
                 <source src="hero.mp4" type="video/mp4">
-                <source src="hero.webm" type="video/webm">
             </video>
         </div>
         <div class="relative max-w-4xl mx-auto text-center space-y-6">
@@ -393,7 +405,7 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 pb-6 border-b border-slate-200">
                 <div>
                     <h2 class="text-3xl font-black text-slate-900">لوحة تحكم مدير فندق المدينة</h2>
-                    <p class="text-slate-500 text-sm mt-1">إدارة الحجوزات، قبولها، أو رفضها من قاعدة البيانات المحلية.</p>
+                    <p class="text-slate-500 text-sm mt-1">إدارة الحجوزات، قبولها، أو رفضها من قاعدة بيانات Firebase.</p>
                 </div>
                 <button onclick="logoutAdmin()" class="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition shadow">
                     تسجيل الخروج
@@ -541,7 +553,7 @@
             <div id="admin-tab-records" class="hidden">
                 <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 text-sm leading-7" style="color:#44403c">
                     🔒 <b>سجل دائم:</b> يُسجَّل هنا تلقائيًا كل طلب حجز (غرفة أو عرض) بكامل بيانات العميل، ثم قرار المدير (قبول أو رفض) كسجل جديد.
-                    لا يوجد زر حذف أو تعديل لهذه السجلات، وحذف الحجز من تبويب الحجوزات لا يمسّها. تُحذف فقط من قاعدة البيانات مباشرة.
+                    لا يوجد زر حذف أو تعديل لهذه السجلات، وحذف الحجز من تبويب الحجوزات لا يمسّها. تُحذف فقط من لوحة Firebase مباشرة.
                 </div>
 
                 <div class="rec-stats mb-6">
@@ -602,32 +614,64 @@
         <p>جميع الحقوق محفوظة © 2026 - فندق المدينة (بورتسودان)</p>
     </footer>
 
-    <!-- المنطق + طبقة البيانات المحلية (بدون إنترنت) -->
-    <script>
-        // ================== طبقة البيانات ==================
-        // الوضع الافتراضي: التخزين داخل المتصفح (localStorage) ← يعمل بدون أي إنترنت أو خادم.
-        // للربط مع قاعدة SQL على جهازك: شغّل server.js ثم ضع العنوان هنا، مثال:
-        //     const API_URL = 'http://localhost:3000/api';
-        const API_URL = 'http://localhost:3000/api';
+    <!-- Firebase SDK (Firestore) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-        const LS_KEY = 'hotel-local-db-v1';
-        let _mem = null;
-        function _load() {
-            if (_mem) return _mem;
-            try { _mem = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) { _mem = {}; }
-            return _mem;
-        }
-        function _save() {
-            try { localStorage.setItem(LS_KEY, JSON.stringify(_mem)); }
-            catch (e) { throw new Error('تعذر الحفظ: مساحة التخزين ممتلئة أو غير متاحة'); }
-        }
+    <!-- المنطق + طبقة البيانات (Firebase) -->
+    <script>
+        // ================== طبقة البيانات: Firebase Firestore ==================
+        // كل بيانات الموقع (الحجوزات، التعليقات، العروض، الإعجابات، الزيارات، سجل الحجوزات)
+        // تُحفظ في Firestore ضمن مشروع hotel-db-affa9، وتتحدّث الصفحة لحظيًا عند أي تغيير.
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6rj9jXcwY6ibFX28wi4zUWqCu04AK_yY",
+            authDomain: "hotel-db-affa9.firebaseapp.com",
+            projectId: "hotel-db-affa9",
+            storageBucket: "hotel-db-affa9.firebasestorage.app",
+            messagingSenderId: "775363791894",
+            appId: "1:775363791894:web:6c7121679dfccb3d947937",
+            measurementId: "G-62EHFTM4ML"
+        };
+
+        let fdb = null;
+        try {
+            if (typeof firebase !== 'undefined') {
+                firebase.initializeApp(firebaseConfig);
+                fdb = firebase.firestore();
+                // long-polling تلقائي: يضمن عمل الاتصال على شبكات الجوال والشبكات التي تحجب WebSocket
+                fdb.settings({ ignoreUndefinedProperties: true, experimentalAutoDetectLongPolling: true });
+            }
+        } catch (e) { console.error('Firebase init', e); fdb = null; }
+
+        const NO_DB_MSG = 'تعذر الاتصال بقاعدة بيانات Firebase، تحقق من اتصالك بالإنترنت';
         function _newId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
 
+        // يظهر شريط تنبيه واحد إن كانت قواعد Firestore تمنع القراءة/الكتابة (أو لم تُنشأ القاعدة بعد)
+        let _bannerShown = false;
+        function _dbProblem(e) {
+            console.error('Firebase:', e);
+            if (_bannerShown || !e || (e.code !== 'permission-denied' && e.code !== 'not-found')) return;
+            _bannerShown = true;
+            const b = document.createElement('div');
+            b.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#b91c1c;color:#fff;padding:10px 14px;font-size:14px;text-align:center';
+            b.textContent = 'تعذر الوصول إلى قاعدة بيانات Firebase: أنشئ قاعدة Firestore وفعّل قواعد القراءة والكتابة من لوحة Firebase.';
+            document.body.appendChild(b);
+            setTimeout(() => b.remove(), 15000);
+        }
+        // يتأكد أن Firebase جاهز وأن الجهاز متصل قبل أي كتابة (حتى لا تُحفظ عملية معلّقة ثم تتكرر)
+        function _ready() {
+            if (!fdb || navigator.onLine === false) throw new Error(NO_DB_MSG);
+            return fdb;
+        }
+        function _limit(p, ms) {
+            return Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error(NO_DB_MSG)), ms || 20000))]);
+        }
+
         // ===== سجل الحجوزات الدائم (records) =====
-        // يُكتب تلقائيًا داخل طبقة البيانات: عند إرسال أي حجز جديد، وعند تغيير حالته (قبول / رفض).
-        // لا توجد أي دالة في الموقع لحذف السجلات أو تعديلها (وكذلك في الخادم).
-        // تُحذف فقط من قاعدة البيانات مباشرة. وحذف الحجز من لوحة المدير لا يمسّ سجلاته.
-        const RECORDS_READONLY_MSG = 'سجل الحجوزات دائم: لا يُحذف ولا يُعدَّل إلا من قاعدة البيانات مباشرة';
+        // يُكتب تلقائيًا: عند إرسال أي حجز جديد، وعند تغيير حالته (قبول / رفض).
+        // لا توجد أي دالة في الموقع لحذف السجلات أو تعديلها، وحذف الحجز من لوحة المدير لا يمسّ سجلاته.
+        // تُحذف فقط من لوحة Firebase مباشرة.
+        const RECORDS_READONLY_MSG = 'سجل الحجوزات دائم: لا يُحذف ولا يُعدَّل إلا من لوحة Firebase مباشرة';
         const DECISION_OF = { 'مؤكد': 'مقبول', 'مرفوض': 'مرفوض', 'قيد الانتظار': 'قيد الانتظار' };
         function makeRecord(bookingId, b, source, at) {
             const s = (x) => (x === undefined || x === null ? '' : String(x));
@@ -653,121 +697,80 @@
                 source: source || 'مباشر'
             };
         }
-        // وضع المتصفح (بدون خادم): تُنقل الحجوزات الموجودة مسبقًا إلى السجل مرة واحدة فقط عند أول استخدام له
-        function _ensureRecords(m) {
-            if (m.records) return false;
-            m.records = (m.booking || []).map(b => { const { id, ...data } = b; return { id: _newId(), ...makeRecord(id, data, 'مُرحَّل', data.createdAt) }; });
-            return true;
+
+        // ===== واجهة بنفس أسماء الدوال المستخدمة في باقي الموقع (collection / addDoc / onSnapshot ...) =====
+        // كل مستند يُحفظ مع الحقل _ts (وقت الإنشاء) ليبقى الترتيب من الأقدم إلى الأحدث كما يعتمد عليه الموقع.
+        let _lastTs = 0;
+        function _stamp() { _lastTs = Math.max(Date.now(), _lastTs + 1); return _lastTs; }
+        function _orderOf(d) {
+            if (typeof d._ts === 'number') return d._ts;
+            const t = Date.parse(d.createdAt || d.at || d.eventAt || '');
+            return isNaN(t) ? 0 : t;
         }
-
-        const localBackend = {
-            async list(name) {
-                const m = _load();
-                if (name === 'records' && _ensureRecords(m)) _save();
-                return (m[name] || []).map(r => ({ ...r }));
-            },
-            async add(name, data) {
-                if (name === 'records') throw new Error(RECORDS_READONLY_MSG);
-                const m = _load(); const id = _newId();
-                if (name === 'booking') _ensureRecords(m); // قبل إضافة الحجز الجديد حتى لا يُحسب كحجز قديم
-                (m[name] = m[name] || []).push({ id, ...data });
-                if (name === 'booking') m.records.push({ id: _newId(), ...makeRecord(id, data) });
-                _save(); return id;
-            },
-            async update(name, id, patch) {
-                if (name === 'records') throw new Error(RECORDS_READONLY_MSG);
-                const m = _load(); const r = (m[name] || []).find(x => x.id === id);
-                if (!r) throw new Error('السجل غير موجود');
-                if (name === 'booking') _ensureRecords(m); // قبل التعديل
-                const oldStatus = r.status;
-                Object.assign(r, patch);
-                // تغيّرت حالة الحجز (قبول / رفض) → سجل جديد بكامل البيانات لحظة القرار
-                if (name === 'booking' && patch.status !== undefined && patch.status !== oldStatus) {
-                    const { id: _bid, ...data } = r;
-                    m.records.push({ id: _newId(), ...makeRecord(id, data) });
-                }
-                _save();
-            },
-            async remove(name, id) {
-                if (name === 'records') throw new Error(RECORDS_READONLY_MSG);
-                const m = _load(); m[name] = (m[name] || []).filter(x => x.id !== id); _save();
-            }
-        };
-
-        async function _api(method, path, body) {
-            const res = await fetch(API_URL + path, {
-                method,
-                headers: body ? { 'Content-Type': 'application/json' } : undefined,
-                body: body ? JSON.stringify(body) : undefined
-            });
-            if (!res.ok) { const err = new Error('API ' + res.status); err.status = res.status; throw err; }
-            return res.json();
-        }
-        const apiBackend = {
-            list: (name) => _api('GET', '/' + name),
-            add: async (name, data) => (await _api('POST', '/' + name, data)).id,
-            update: (name, id, patch) => _api('PATCH', '/' + name + '/' + id, patch),
-            remove: (name, id) => _api('DELETE', '/' + name + '/' + id)
-        };
-        // إن كان server.js قديمًا (لا يعرف جدولي الإعجابات والزيارات) نحفظهما داخل المتصفح بدل أن تتعطل الميزة
-        const FALLBACK_COLS = ['likes', 'visits'];
-        const apiBackendSafe = {};
-        ['list', 'add', 'update', 'remove'].forEach(m => {
-            apiBackendSafe[m] = async (name, ...a) => {
-                try { return await apiBackend[m](name, ...a); }
-                catch (e) {
-                    if (e.status === 404 && FALLBACK_COLS.includes(name)) {
-                        console.warn('server.js قديم: يرجى استبداله بالنسخة الجديدة لحفظ ' + name + ' في قاعدة البيانات');
-                        return localBackend[m](name, ...a);
-                    }
-                    throw e;
-                }
-            };
-        });
-        let Backend = localBackend;
-        let useApi = false;
-        // يجرب الاتصال بالخادم (قاعدة SQLite)؛ إن لم يكن يعمل يحفظ داخل المتصفح تلقائيًا
-        const ready = (async () => {
-            if (!API_URL) return;
-            try {
-                const ctl = new AbortController();
-                const t = setTimeout(() => ctl.abort(), 2000);
-                const r = await fetch(API_URL + '/booking', { cache: 'no-store', signal: ctl.signal });
-                clearTimeout(t);
-                if (r.ok) { Backend = apiBackendSafe; useApi = true; }
-            } catch (e) { console.warn('الخادم غير متاح، سيتم الحفظ داخل المتصفح'); }
-        })();
-
-        // واجهة بنفس أسماء الدوال القديمة (collection / addDoc / onSnapshot ...) حتى لا يتغير باقي الموقع
-        const db = {};
-        const _listeners = [];
-        function collection(_db, name) { return { name }; }
-        function doc(_db, name, id) { return { name, id }; }
-        function _snap(rows) {
+        const _clean = (o) => JSON.parse(JSON.stringify(o));
+        function _snap(qs) {
+            const rows = [];
+            qs.forEach(s => rows.push({ id: s.id, ...s.data() }));
+            rows.sort((a, b) => _orderOf(a) - _orderOf(b));
             return {
                 empty: rows.length === 0,
-                forEach(cb) { rows.forEach(r => { const { id, ...data } = r; cb({ id, data: () => data }); }); }
+                forEach(cb) { rows.forEach(r => { const { id, _ts, ...data } = r; cb({ id, data: () => data }); }); }
             };
         }
-        async function _refresh(l) {
-            try { await ready; l.ok(_snap(await Backend.list(l.name))); }
-            catch (e) { if (l.fail) l.fail(e); else console.error(e); }
-        }
-        function _notify(name) { _listeners.filter(l => l.name === name).forEach(_refresh); }
-        // السجلات تتولد تلقائيًا من الحجوزات، لذلك نحدّث قائمتها أيضًا عند أي تغيير في الحجوزات
+
+        const db = {};
+        function collection(_db, name) { return { name }; }
+        function doc(_db, name, id) { return { name, id }; }
         function _guardRecords(c) { if (c.name === 'records') throw new Error(RECORDS_READONLY_MSG); }
-        async function addDoc(c, data) { _guardRecords(c); await ready; const id = await Backend.add(c.name, data); _notify(c.name); if (c.name === 'booking') _notify('records'); return { id }; }
-        async function updateDoc(d, patch) { _guardRecords(d); await ready; await Backend.update(d.name, d.id, patch); _notify(d.name); if (d.name === 'booking') _notify('records'); }
-        async function deleteDoc(d) { _guardRecords(d); await ready; await Backend.remove(d.name, d.id); _notify(d.name); }
-        function onSnapshot(c, ok, fail) {
-            const l = { name: c.name, ok, fail };
-            _listeners.push(l);
-            setTimeout(() => _refresh(l), 0);
-            return () => { const i = _listeners.indexOf(l); if (i >= 0) _listeners.splice(i, 1); };
+
+        async function addDoc(c, data) {
+            _guardRecords(c);
+            try {
+                const f = _ready();
+                const body = { ..._clean(data), _ts: _stamp() };
+                const ref = f.collection(c.name).doc();
+                if (c.name === 'booking') {
+                    // الحجز وسجله يُحفظان معًا في عملية واحدة: إمّا يُحفظان أو لا يُحفظ أيٌّ منهما
+                    const batch = f.batch();
+                    batch.set(ref, body);
+                    batch.set(f.collection('records').doc(), { ...makeRecord(ref.id, data), _ts: _stamp() });
+                    await _limit(batch.commit());
+                } else {
+                    await _limit(ref.set(body));
+                }
+                return { id: ref.id };
+            } catch (e) { _dbProblem(e); throw e; }
         }
-        // مزامنة بين تبويبات المتصفح (محلي) أو تحديث دوري من الخادم (API)
-        window.addEventListener('storage', (e) => { if (e.key === LS_KEY) { _mem = null; _listeners.forEach(_refresh); } });
-        setInterval(() => { if (useApi) _listeners.forEach(_refresh); }, 4000);
+        async function updateDoc(d, patch) {
+            _guardRecords(d);
+            try {
+                const f = _ready();
+                const ref = f.collection(d.name).doc(d.id);
+                const clean = _clean(patch);
+                if (d.name !== 'booking') { await _limit(ref.update(clean)); return; }
+                await _limit(f.runTransaction(async (tx) => {
+                    const s = await tx.get(ref);
+                    if (!s.exists) throw new Error('السجل غير موجود');
+                    const old = s.data();
+                    tx.update(ref, clean);
+                    // تغيّرت حالة الحجز (قبول / رفض) → سجل جديد بكامل البيانات لحظة القرار
+                    if (clean.status !== undefined && clean.status !== old.status) {
+                        const { _ts, ...oldData } = old;
+                        tx.set(f.collection('records').doc(), { ...makeRecord(d.id, { ...oldData, ...clean }), _ts: _stamp() });
+                    }
+                }));
+            } catch (e) { _dbProblem(e); throw e; }
+        }
+        async function deleteDoc(d) {
+            _guardRecords(d);
+            try { await _limit(_ready().collection(d.name).doc(d.id).delete()); }
+            catch (e) { _dbProblem(e); throw e; }
+        }
+        function onSnapshot(c, ok, fail) {
+            const report = (e) => { _dbProblem(e); if (fail) fail(e); else console.error(c.name, e); };
+            if (!fdb) { setTimeout(() => report(new Error(NO_DB_MSG)), 0); return () => {}; }
+            return fdb.collection(c.name).onSnapshot((qs) => ok(_snap(qs)), report);
+        }
         // ====================================================
 
         let selectedRoomName = '';
@@ -778,13 +781,16 @@
         (function heroVideo() {
             const v = document.getElementById('hero-video');
             if (!v) return;
-            v.muted = true;
+            v.muted = true; v.defaultMuted = true; v.playsInline = true;
+            v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
             const go = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
             go();
+            v.addEventListener('loadeddata', go);
+            document.addEventListener('visibilitychange', () => { if (!document.hidden && v.paused) go(); });
             ['click', 'touchstart', 'scroll'].forEach(ev => window.addEventListener(ev, () => { if (v.paused) go(); }, { once: true, passive: true }));
-            // تُخفى عنصر الفيديو فقط إذا فشلت كل المصادر (آخر مصدر يُجرَّب أخيرًا)، فتبقى الصورة ظاهرة
-            const srcs = v.querySelectorAll('source');
-            if (srcs.length) srcs[srcs.length - 1].addEventListener('error', () => { v.style.display = 'none'; });
+            // إن تعذّر تحميل الفيديو يُخفى العنصر فتبقى الصورة 1.jpeg ظاهرة
+            const src = v.querySelector('source');
+            if (src) src.addEventListener('error', () => { v.style.display = 'none'; });
         })();
 
         // ================== الغرف + الإعجاب + أفضل الغرف ==================
@@ -902,7 +908,7 @@
                 else await addDoc(collection(db, "likes"), { room: r.name, visitorId: VISITOR_ID, createdAt: new Date().toISOString() });
             } catch (e) {
                 console.error(e);
-                alert('تعذر حفظ الإعجاب، تحقق من التخزين أو من اتصال الخادم المحلي.');
+                alert('تعذر حفظ الإعجاب، تحقق من اتصالك بالإنترنت.');
             } finally {
                 likePending.delete(r.id);
                 btn.disabled = false;
@@ -1161,7 +1167,7 @@
                 alert('شكراً لك! تم نشر تعليقك.');
             } catch (error) {
                 console.error("خطأ في حفظ التعليق:", error);
-                alert('تعذر إرسال التعليق، تحقق من التخزين أو من اتصال الخادم المحلي.');
+                alert('تعذر إرسال التعليق، تحقق من اتصالك بالإنترنت.');
             } finally {
                 btn.innerText = 'إرسال التعليق';
                 btn.disabled = false;
@@ -1187,623 +1193,4 @@
         });
 
         // ===== المنيو =====
-        const HOTEL_WHATSAPP = '249XXXXXXXXX'; // ← ضع رقم واتساب الفندق هنا بالصيغة الدولية بدون +
-
-        window.openMenu = function() { document.getElementById('menu-modal').classList.remove('hidden'); }
-        window.closeMenu = function() { document.getElementById('menu-modal').classList.add('hidden'); }
-        window.menuAdmin = function() { closeMenu(); openAdminLogin(); }
-
-        window.toggleAbout = function() {
-            document.getElementById('about-panel').classList.toggle('hidden');
-            document.getElementById('about-arrow').classList.toggle('rotate-180');
-        }
-
-        window.openHelpWhatsApp = function() {
-            const msg = 'السلام عليكم، أحتاج مساعدة بخصوص فندق المدينة - بورتسودان.';
-            window.open(`https://api.whatsapp.com/send?phone=${HOTEL_WHATSAPP}&text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        function applyTheme(dark) {
-            document.body.classList.toggle('dark', dark);
-            document.getElementById('theme-label').innerText = dark ? 'الوضع النهاري' : 'الوضع الليلي';
-            document.getElementById('theme-icon').innerHTML = dark
-                ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M2 12h2M20 12h2M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400"/>'
-                : '<path d="M21 12.800A9 9 0 1111.200 3a7 7 0 009.800 9.800z"/>';
-        }
-
-        window.toggleDarkMode = function() {
-            const dark = !document.body.classList.contains('dark');
-            applyTheme(dark);
-            try { localStorage.setItem('hotel-theme', dark ? 'dark' : 'light'); } catch (e) {}
-        }
-
-        try { applyTheme(localStorage.getItem('hotel-theme') === 'dark'); } catch (e) { applyTheme(false); }
-
-        window.openAdminLogin = function() {
-            document.getElementById('admin-login-modal').classList.remove('hidden');
-        }
-
-        window.closeAdminLogin = function() {
-            document.getElementById('admin-login-modal').classList.add('hidden');
-            document.getElementById('admin-pass').value = '';
-        }
-
-        window.verifyAdmin = function() {
-            const pass = document.getElementById('admin-pass').value;
-            if(pass === '2017' || pass === '2018') {
-                closeAdminLogin();
-                isAdminLogged = true;
-                try { localStorage.setItem('hotel-admin-device', '1'); } catch (e) {}
-                renderReviews();
-                showAdminTab('bookings');
-                startRecordsFeed();
-                document.getElementById('admin-dashboard').classList.remove('hidden');
-                window.scrollTo({ top: document.getElementById('admin-dashboard').offsetTop, behavior: 'smooth' });
-            } else {
-                alert('رمز الأمان غير صحيح!');
-            }
-        }
-
-        window.logoutAdmin = function() {
-            isAdminLogged = false;
-            stopRecordsFeed();
-            renderReviews();
-            document.getElementById('admin-dashboard').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ===== تبويبات لوحة المدير + صفحة سجل الحجوزات =====
-        window.showAdminTab = function(tab) {
-            const on = 'admin-tab bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition shadow';
-            const off = 'admin-tab bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm transition';
-            ['bookings', 'customers', 'records'].forEach(t => {
-                document.getElementById('admin-tab-' + t).classList.toggle('hidden', t !== tab);
-                document.getElementById('tab-btn-' + t).className = t === tab ? on : off;
-            });
-        }
-
-        let globalRecords = [];
-        let recordsUnsub = null;
-        let recordsLimit = 100;
-
-        // لا تُحمَّل السجلات إلا بعد دخول المدير، وتتوقف عند تسجيل الخروج
-        let globalVisits = [];
-        let visitsUnsub = null;
-        function startRecordsFeed() {
-            if (!visitsUnsub) {
-                visitsUnsub = onSnapshot(collection(db, "visits"), (snapshot) => {
-                    globalVisits = [];
-                    snapshot.forEach(d => globalVisits.push({ id: d.id, ...d.data() }));
-                    renderCustomers();
-                }, (e) => console.error('visits', e));
-            }
-            if (recordsUnsub) return;
-            recordsUnsub = onSnapshot(collection(db, "records"), (snapshot) => {
-                globalRecords = [];
-                snapshot.forEach(d => globalRecords.push({ id: d.id, ...d.data() }));
-                renderRecords();
-                renderCustomers();
-            }, (error) => {
-                console.error("خطأ في تحميل السجلات:", error);
-                document.getElementById('records-table-body').innerHTML =
-                    '<tr><td colspan="10" class="text-center py-6 text-red-500">تعذر تحميل سجل الحجوزات.</td></tr>';
-            });
-        }
-        function stopRecordsFeed() {
-            if (recordsUnsub) { recordsUnsub(); recordsUnsub = null; }
-            if (visitsUnsub) { visitsUnsub(); visitsUnsub = null; }
-            globalRecords = [];
-            globalVisits = [];
-            const tb = document.getElementById('records-table-body');
-            if (tb) tb.innerHTML = '';
-            ['vip-table-body', 'customers-table-body'].forEach(id => { const e = document.getElementById(id); if (e) e.innerHTML = ''; });
-        }
-
-        // ===== تقرير العملاء =====
-        // يُبنى من سجل الحجوزات الدائم، فلا يتأثر بحذف الحجز من لوحة المدير، ولا يتكرر العميل.
-        const VIP_MIN_BOOKINGS = 3; // «أكثر من مرتين» = 3 حجوزات فأكثر
-        function customerKey(name, phone) {
-            const p = normPhone(phone);
-            return p.length >= 7 ? 'p' + p : 'n' + normText(name);
-        }
-        function buildCustomers() {
-            // 1) آخر حالة لكل حجز (السجلات مرتبة من الأقدم للأحدث)
-            const bookings = new Map();
-            globalRecords.forEach(r => {
-                const b = bookings.get(r.bookingId) || {
-                    key: customerKey(r.clientName, r.clientPhone),
-                    label: r.kind === 'عرض' ? '🎁 ' + (r.offerTitle || 'عرض') : (r.roomName || 'غرفة'),
-                    time: r.bookedAt || r.eventAt || ''
-                };
-                b.name = r.clientName; b.phone = r.clientPhone; b.decision = r.decision;
-                bookings.set(r.bookingId, b);
-            });
-            // 2) تجميع الحجوزات لكل عميل
-            const map = new Map();
-            bookings.forEach(b => {
-                let c = map.get(b.key);
-                if (!c) { c = { key: b.key, name: '', phone: '', count: 0, confirmed: 0, first: b.time, last: '', items: {} }; map.set(b.key, c); }
-                c.name = b.name || c.name; c.phone = b.phone || c.phone;
-                c.count++;
-                if (b.decision === 'مقبول') c.confirmed++;
-                if (b.time && (!c.first || b.time < c.first)) c.first = b.time;
-                if (b.time > c.last) c.last = b.time;
-                c.items[b.label] = (c.items[b.label] || 0) + 1;
-            });
-            // ترتيب تصاعدي حسب عدد مرات الحجز
-            return [...map.values()].sort((a, b) => a.count - b.count || String(a.first).localeCompare(String(b.first)));
-        }
-        function custItemsHTML(items) {
-            return Object.entries(items).map(([k, n]) => escapeHTML(k) + (n > 1 ? ` <span class="text-slate-500">×${n}</span>` : '')).join('<br>');
-        }
-        function renderCustomers() {
-            const tbody = document.getElementById('customers-table-body');
-            if (!tbody) return;
-            const all = buildCustomers();
-            const vips = all.filter(c => c.count >= VIP_MIN_BOOKINGS);
-
-            // إحصائيات الزوار
-            const today = new Date().toDateString();
-            const visitors = new Set(globalVisits.map(v => v.visitorId));
-            const todayVisits = globalVisits.filter(v => new Date(v.at).toDateString() === today);
-            const todayVisitors = new Set(todayVisits.map(v => v.visitorId));
-            document.getElementById('cs-visitors').innerText = visitors.size;
-            document.getElementById('cs-visitors-today').innerText = 'اليوم: ' + todayVisitors.size;
-            document.getElementById('cs-visits').innerText = globalVisits.length;
-            document.getElementById('cs-visits-today').innerText = 'اليوم: ' + todayVisits.length;
-            document.getElementById('cs-customers').innerText = all.length;
-            document.getElementById('cs-conv').innerText = visitors.size ? 'نسبة الحجز من الزوار: ' + Math.min(100, Math.round(all.length / visitors.size * 100)) + '%' : '';
-            document.getElementById('cs-vip').innerText = vips.length;
-
-            // البحث
-            const term = normText(document.getElementById('cust-search').value);
-            const digits = normPhone(document.getElementById('cust-search').value);
-            const match = (c) => !term || normText(c.name).includes(term) || (digits.length >= 3 && normPhone(c.phone).includes(digits));
-            const row = (c, i, withClass) => {
-                const vip = c.count >= VIP_MIN_BOOKINGS;
-                return `<tr>
-                    <td class="p-2.5 text-slate-500">${i + 1}</td>
-                    <td class="p-2.5 font-bold text-slate-900 rec-name">${vip ? '⭐ ' : ''}${escapeHTML(c.name)}</td>
-                    <td class="p-2.5 text-slate-700" dir="ltr" style="text-align:right">${escapeHTML(c.phone)}</td>
-                    <td class="p-2.5"><span class="cnt-badge${vip ? ' vip' : ''}">${c.count}</span></td>
-                    <td class="p-2.5 text-emerald-700 font-bold">${c.confirmed}</td>
-                    <td class="p-2.5 rec-wrap text-xs text-slate-600">${custItemsHTML(c.items)}</td>
-                    <td class="p-2.5 text-xs text-slate-600"><span dir="ltr">${escapeHTML(fmtDateTime(c.last))}</span></td>
-                    ${withClass ? `<td class="p-2.5">${vip ? '<span class="vip-badge">⭐ عميل مميز</span>' : '<span class="text-slate-500 text-xs">عميل</span>'}</td>` : ''}
-                </tr>`;
-            };
-            const vShown = vips.filter(match), aShown = all.filter(match);
-            document.getElementById('vip-table-body').innerHTML = vShown.length
-                ? vShown.map((c, i) => row(c, i, false)).join('')
-                : `<tr><td colspan="7" class="text-center py-6 text-slate-400">${vips.length ? 'لا توجد نتائج مطابقة.' : 'لا يوجد عملاء مميزون بعد. يظهر هنا من يحجز أكثر من مرتين.'}</td></tr>`;
-            tbody.innerHTML = aShown.length
-                ? aShown.map((c, i) => row(c, i, true)).join('')
-                : `<tr><td colspan="8" class="text-center py-6 text-slate-400">${all.length ? 'لا توجد نتائج مطابقة.' : 'لا يوجد عملاء بعد. يُحفظ اسم كل شخص يقوم بالحجز هنا تلقائيًا.'}</td></tr>`;
-            document.getElementById('cust-footer').innerText = `عدد العملاء: ${all.length} — المميزون: ${vips.length}`;
-        }
-
-        window.onRecFilter = function() { recordsLimit = 100; renderRecords(); }
-        window.recShowMore = function() { recordsLimit += 100; renderRecords(); }
-
-        function recDecisionBadge(d) {
-            if (d === 'مقبول') return '<span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-xs font-bold">مقبول ✔</span>';
-            if (d === 'مرفوض') return '<span class="bg-red-100 text-red-800 px-2.5 py-1 rounded-full text-xs font-bold">مرفوض ✖</span>';
-            return '<span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-xs font-bold">طلب جديد</span>';
-        }
-        function fmtDateTime(iso) {
-            if (!iso) return '';
-            const d = new Date(iso);
-            if (isNaN(d)) return String(iso);
-            const p = (n) => String(n).padStart(2, '0');
-            return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
-        }
-
-        function renderRecords() {
-            const tbody = document.getElementById('records-table-body');
-            if (!tbody) return;
-
-            // الإحصائيات: آخر قرار لكل حجز
-            const latest = new Map();
-            globalRecords.forEach((r, idx) => { r._seq = idx + 1; latest.set(r.bookingId, r.decision); });
-            let accepted = 0, rejected = 0, pending = 0;
-            latest.forEach(d => { if (d === 'مقبول') accepted++; else if (d === 'مرفوض') rejected++; else pending++; });
-            document.getElementById('rec-stat-total').innerText = latest.size;
-            document.getElementById('rec-stat-accepted').innerText = accepted;
-            document.getElementById('rec-stat-rejected').innerText = rejected;
-            document.getElementById('rec-stat-pending').innerText = pending;
-
-            // التصفية والبحث
-            const decision = document.getElementById('rec-filter').value;
-            const term = normText(document.getElementById('rec-search').value);
-            const digits = normPhone(document.getElementById('rec-search').value);
-            const rows = globalRecords.filter(r => {
-                if (decision && r.decision !== decision) return false;
-                if (!term) return true;
-                const hay = normText([r.clientName, r.roomName, r.roomNumber, r.offerTitle].join(' '));
-                return hay.includes(term) || (digits.length >= 3 && normPhone(r.clientPhone).includes(digits));
-            }).reverse(); // الأحدث أولاً
-
-            const total = globalRecords.length;
-            if (rows.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="10" class="text-center py-6 text-slate-400">${total ? 'لا توجد سجلات مطابقة للبحث.' : 'لا توجد سجلات بعد. ستظهر هنا تلقائيًا مع أول حجز.'}</td></tr>`;
-                document.getElementById('rec-footer').innerHTML = '';
-                return;
-            }
-
-            const shown = rows.slice(0, recordsLimit);
-            tbody.innerHTML = shown.map((r) => {
-                const isOffer = r.kind === 'عرض';
-                const num = typeof r.id === 'number' ? r.id : r._seq; // رقم السجل في القاعدة (أو ترتيبه في وضع المتصفح)
-                const migrated = r.source === 'مُرحَّل'
-                    ? `<div class="text-[10px] text-slate-500" title="حجز قديم نُقل إلى السجل عند تفعيله؛ الوقت المعروض هو وقت إرسال الحجز وليس بالضرورة وقت القرار">(مُرحَّل)</div>` : '';
-                const bookedLine = (r.source !== 'مُرحَّل' && r.bookedAt && fmtDateTime(r.bookedAt) !== fmtDateTime(r.eventAt))
-                    ? `<div class="text-[10px] text-slate-500">طُلب في <span dir="ltr">${escapeHTML(fmtDateTime(r.bookedAt))}</span></div>` : '';
-                const target = isOffer
-                    ? `<div class="text-xs text-amber-700 font-bold">🎁 حجز عرض</div>
-                       <div class="font-semibold text-slate-700">${escapeHTML(r.offerTitle)}</div>
-                       <div class="text-xs text-slate-500">${escapeHTML(r.residency)}${r.priceApplied ? ' — ' + escapeHTML(r.priceApplied) : ''}${r.roomName ? ' — ' + escapeHTML(r.roomName) : ''}</div>`
-                    : `<div class="text-xs text-slate-500">🛏️ حجز غرفة</div>
-                       <div class="font-semibold text-slate-700">${escapeHTML(r.roomName)}</div>
-                       ${r.roomNumber ? `<div class="text-xs text-slate-500">رقم الغرفة: ${escapeHTML(r.roomNumber)}</div>` : ''}`;
-                const stay = (r.checkIn || r.checkOut)
-                    ? `<div>الوصول: <span dir="ltr">${escapeHTML(r.checkIn) || '—'}</span></div><div>المغادرة: <span dir="ltr">${escapeHTML(r.checkOut) || '—'}</span></div>`
-                    : '<span class="text-slate-400">—</span>';
-                const pay = r.paymentMethod
-                    ? `<div>${r.paymentMethod === 'تطبيق بنكي' ? '🏦' : '💵'} ${escapeHTML(r.paymentMethod)}</div>
-                       ${r.bankName ? `<div class="text-xs text-slate-500">${escapeHTML(r.bankName)}</div>` : ''}
-                       ${r.paid ? `<div class="text-xs ${r.paid === 'نعم' ? 'text-emerald-600' : 'text-red-600'} font-bold">${r.paid === 'نعم' ? 'تم تأكيد الدفع ✔' : 'الدفع غير مؤكد'}</div>` : ''}`
-                    : '<span class="text-slate-400">—</span>';
-                const transport = (r.transport && r.transport !== 'بدون')
-                    ? `<div>${r.transport === 'ليموزين (المطار)' ? '🚘' : '🚕'} ${escapeHTML(r.transport)}</div>
-                       ${r.transportTime ? `<div class="text-xs text-slate-500" dir="ltr">${escapeHTML(r.transportTime.replace('T', ' '))}</div>` : ''}
-                       ${r.transportRef ? `<div class="text-xs text-slate-500">${escapeHTML(r.transportRef)}</div>` : ''}`
-                    : '<span class="text-slate-400">—</span>';
-                return `
-                    <tr>
-                        <td class="p-2.5 text-slate-500">${escapeHTML(num)}</td>
-                        <td class="p-2.5">${recDecisionBadge(r.decision)}</td>
-                        <td class="p-2.5 text-xs text-slate-600"><div dir="ltr" class="text-right">${escapeHTML(fmtDateTime(r.eventAt))}</div>${bookedLine}${migrated}</td>
-                        <td class="p-2.5 font-bold text-slate-900 rec-name">${escapeHTML(r.clientName)}</td>
-                        <td class="p-2.5 text-slate-700" dir="ltr" style="text-align:right">${escapeHTML(r.clientPhone)}</td>
-                        <td class="p-2.5 rec-wrap">${target}</td>
-                        <td class="p-2.5 text-xs text-slate-600">${stay}</td>
-                        <td class="p-2.5 rec-wrap">${pay}</td>
-                        <td class="p-2.5 rec-wrap">${transport}</td>
-                        <td class="p-2.5 rec-notes text-slate-600">${escapeHTML(r.notes) || '<span class="text-slate-400">—</span>'}</td>
-                    </tr>`;
-            }).join('');
-
-            document.getElementById('rec-footer').innerHTML =
-                `عرض ${shown.length} من ${rows.length} سجل` + (rows.length !== total ? ` (إجمالي السجلات ${total})` : '') +
-                (rows.length > shown.length ? ` <button onclick="recShowMore()" style="margin-right:.5rem" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold px-4 py-2 rounded-xl text-xs transition">عرض المزيد</button>` : '');
-        }
-
-        function checkRoomAvailabilityAndUI(bookingsList) {
-            const rooms = ROOMS.map(r => ({ name: r.name, btnId: 'btn-room-' + r.id, statusId: 'status-room-' + r.id }));
-
-            const today = new Date().toISOString().split('T')[0];
-
-            rooms.forEach(room => {
-                const statusEl = document.getElementById(room.statusId);
-                const btnEl = document.getElementById(room.btnId);
-
-                const activeBookings = bookingsList.filter(b => b.roomName === room.name && b.status === 'مؤكد' && b.checkOutDate >= today);
-                
-                if (activeBookings.length > 0) {
-                    activeBookings.sort((a, b) => new Date(a.checkInDate) - new Date(b.checkInDate));
-                    const nextBooking = activeBookings[0];
-
-                    const checkInDateObj = new Date(nextBooking.checkInDate);
-                    const todayObj = new Date(today);
-                    const diffDays = Math.ceil((checkInDateObj - todayObj) / (1000 * 60 * 60 * 24));
-
-                    if (diffDays <= 0) {
-                        statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-red-100 text-red-700 text-center";
-                        statusEl.innerText = `🔴 الغرفة ممتلئة حتى يوم ${nextBooking.checkOutDate}`;
-                        btnEl.disabled = true;
-                        btnEl.className = "w-full bg-slate-300 text-slate-500 font-bold py-2.5 rounded-xl cursor-not-allowed";
-                    } else if (diffDays <= 5) {
-                        statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-amber-100 text-amber-800 text-center";
-                        statusEl.innerText = `⚠️ الغرفة ممتلئة ابتداءً من تاريخ ${nextBooking.checkInDate}`;
-                        btnEl.disabled = false;
-                        btnEl.className = "w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition";
-                    } else {
-                        statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-emerald-100 text-emerald-800 text-center";
-                        statusEl.innerText = `🟢 الغرفة متاحة (ممتلئة ابتداءً من يوم ${nextBooking.checkInDate})`;
-                        btnEl.disabled = false;
-                        btnEl.className = "w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition";
-                    }
-                } else {
-                    statusEl.className = "mb-4 text-xs font-bold p-2.5 rounded-xl bg-emerald-100 text-emerald-800 text-center";
-                    statusEl.innerText = `🟢 متاح للحجز الفوري`;
-                    btnEl.disabled = false;
-                    btnEl.className = "w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition";
-                }
-            });
-        }
-
-        window.submitBooking = async function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('client-name').value;
-            const phone = document.getElementById('client-phone').value;
-            const checkIn = document.getElementById('check-in').value;
-            const checkOut = document.getElementById('check-out').value;
-            const notes = document.getElementById('client-notes').value;
-
-            const payMethod = document.querySelector('input[name="pay-method"]:checked')?.value;
-            const bankName = document.querySelector('input[name="bank-name"]:checked')?.value || '';
-            const transport = document.querySelector('input[name="transport"]:checked')?.value || 'none';
-            const transportTime = document.getElementById('transport-time').value;
-            const transportRef = document.getElementById('transport-ref').value.trim();
-            if (transport !== 'none' && !transportTime) { alert('يرجى تحديد موعد وصول ' + (transport === 'limousine' ? 'الطائرة' : 'الباص') + ' ليتم إرسال ' + (transport === 'limousine' ? 'الليموزين' : 'التاكسي') + ' في الوقت المناسب.'); return; }
-            if (!payMethod) { alert('يرجى اختيار طريقة الدفع.'); return; }
-            if (payMethod === 'bank' && !bankName) { alert('يرجى اختيار أحد البنوك / التطبيقات البنكية.'); return; }
-
-            if (checkIn >= checkOut) {
-                alert('خطأ في التواريخ: تاريخ المغادرة يجب أن يكون بعد تاريخ الوصول.');
-                return;
-            }
-
-            const conflicting = globalBookings.find(b => {
-                if (b.roomName !== selectedRoomName || b.status !== 'مؤكد') return false;
-                return (checkIn < b.checkOutDate) && (checkOut > b.checkInDate);
-            });
-
-            if (conflicting) {
-                alert(`عذراً، التواريخ متعارضة مع حجز مسبق من (${conflicting.checkInDate} إلى ${conflicting.checkOutDate}).`);
-                return;
-            }
-
-            const submitBtn = document.getElementById('submit-btn');
-            submitBtn.innerText = 'جاري الإرسال...';
-            submitBtn.disabled = true;
-
-            try {
-                await addDoc(collection(db, "booking"), {
-                    clientName: name,
-                    clientPhone: phone,
-                    roomName: selectedRoomName,
-                    checkInDate: checkIn,
-                    checkOutDate: checkOut,
-                    notes: notes,
-                    status: "قيد الانتظار",
-                    paymentMethod: payMethod,
-                    bankName: payMethod === 'bank' ? bankName : '',
-                    paid: false,
-                    transport: transport,
-                    transportTime: transport !== 'none' ? transportTime : '',
-                    transportRef: transport !== 'none' ? transportRef : '',
-                    kind: 'room',
-                    createdAt: new Date().toISOString()
-                });
-
-                if (payMethod === 'bank') {
-                    alert('تم تسجيل الحجز.\nحوّل المبلغ إلى الحساب رقم: 2560786\nاسم الحساب: حسابي (حساب وهمي للتجربة)\nلن يتم تأكيد الحجز إلا بعد وصول المبلغ.');
-                } else {
-                    alert('تم إرسال طلب الحجز بنجاح!');
-                }
-                closeBookingModal();
-            } catch (error) {
-                console.error("خطأ في حفظ الحجز: ", error);
-                alert('حدث خطأ أثناء حفظ الحجز، تحقق من التخزين أو من اتصال الخادم المحلي.');
-            } finally {
-                submitBtn.innerText = 'إرسال الحجز';
-                submitBtn.disabled = false;
-            }
-        }
-
-        onSnapshot(collection(db, "booking"), (snapshot) => {
-            const tbody = document.getElementById('bookings-table-body');
-            tbody.innerHTML = '';
-            globalBookings = [];
-            
-            let total = 0, pending = 0, confirmed = 0;
-            
-            if(snapshot.empty) {
-                tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-400">لا توجد حجوزات مسجلة حالياً.</td></tr>`;
-            }
-
-            snapshot.forEach((docSnap) => {
-                const data = docSnap.data();
-                const id = docSnap.id;
-                globalBookings.push({ id, ...data });
-                
-                total++;
-                if(data.status === 'قيد الانتظار') pending++;
-                if(data.status === 'مؤكد') confirmed++;
-
-                let statusBadge = '';
-                if(data.status === 'مؤكد') statusBadge = '<span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full text-xs font-bold">مؤكد</span>';
-                else if(data.status === 'مرفوض') statusBadge = '<span class="bg-red-100 text-red-800 px-2.5 py-1 rounded-full text-xs font-bold">مرفوض</span>';
-                else statusBadge = '<span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-xs font-bold">قيد الانتظار</span>';
-
-                const needsPay = data.paymentMethod === 'bank' && !data.paid;
-                const payLabel = data.paymentMethod === 'bank'
-                    ? `🏦 ${escapeHTML(data.bankName || 'تطبيق بنكي')} ` + (data.paid ? '<span class="text-emerald-600 font-bold">(تم الدفع ✔)</span>' : '<span class="text-red-600 font-bold">(لم يُؤكَّد الدفع)</span>')
-                    : (data.paymentMethod === 'cash' ? '💵 الدفع عند الوصول' : '');
-                const trLabel = data.transport === 'limousine' ? '🚘 ليموزين (المطار)' : data.transport === 'taxi' ? '🚕 تاكسي (الميناء البري)' : '';
-                const warnIcon = needsPay ? '<span title="لم يتم تأكيد الدفع المسبق - لا تقبل الحجز قبل التأكد" class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-600 text-white text-sm font-black ml-1">!</span>' : '';
-                const row = `
-                    <tr class="hover:bg-slate-50 transition">
-                        <td class="p-3">
-                            <div class="font-bold text-slate-900">${warnIcon}${escapeHTML(data.clientName || '')}</div>
-                            <div class="text-xs text-slate-500" dir="ltr">${escapeHTML(data.clientPhone || '')}</div>
-                            <div class="text-xs mt-1">${payLabel}</div>
-                            ${trLabel ? `<div class="text-xs">${trLabel}${data.transportTime ? ' — ' + escapeHTML(data.transportTime.replace('T',' ')) : ''}${data.transportRef ? ' (' + escapeHTML(data.transportRef) + ')' : ''}</div>` : ''}
-                            ${data.offerTitle ? `<div class="text-xs text-amber-700">🎁 ${escapeHTML(data.offerTitle)}</div>` : ''}
-                        </td>
-                        <td class="p-3 font-semibold text-slate-700">${data.kind === 'offer' ? `🎁 عرض<div class="text-xs font-normal">${data.isResident ? 'مقيم' : 'من خارج الفندق'} — ${escapeHTML(data.priceApplied || '')}</div>` : ''}${escapeHTML(data.roomName || '')}${data.kind !== 'offer' ? `<div class="mt-1 flex gap-1"><input id="rn-${id}" value="${escapeHTML(data.roomNumber || '')}" placeholder="رقم الغرفة" class="w-20 border border-slate-300 rounded px-1 py-0.5 text-xs font-normal"><button onclick="saveRoomNumber('${id}')" class="bg-slate-700 text-white px-2 rounded text-xs">حفظ</button></div>` : ''}</td>
-                        <td class="p-3 text-xs text-slate-600">
-                            ${data.kind === 'offer' ? `<div>${escapeHTML(data.offerTitle || '')}</div>` : `<div>الوصول: ${data.checkInDate || ''}</div><div>المغادرة: ${data.checkOutDate || ''}</div>`}
-                        </td>
-                        <td class="p-3">${statusBadge}</td>
-                        <td class="p-3 text-center space-x-1 space-x-reverse">
-                            ${needsPay ? `<button onclick="markPaid('${id}')" class="bg-sky-600 hover:bg-sky-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold transition">تأكيد الدفع</button>` : ''}
-                            <button onclick="updateStatus('${id}', 'مؤكد')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold transition">قبول</button>
-                            <button onclick="updateStatus('${id}', 'مرفوض')" class="bg-amber-600 hover:bg-amber-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold transition">رفض</button>
-                            <button onclick="deleteBooking('${id}')" class="bg-red-600 hover:bg-red-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold transition">حذف</button>
-                        </td>
-                    </tr>
-                `;
-                tbody.innerHTML += row;
-            });
-
-            document.getElementById('stat-total').innerText = total;
-            document.getElementById('stat-pending').innerText = pending;
-            document.getElementById('stat-confirmed').innerText = confirmed;
-
-            checkRoomAvailabilityAndUI(globalBookings);
-            updateRoomStats();
-        });
-
-        function normalizeWhatsAppNumber(raw) {
-            let n = String(raw || '').replace(/[^\d]/g, '');
-            if (n.startsWith('00')) n = n.slice(2);
-            else if (n.startsWith('0')) n = '249' + n.slice(1); // رقم سوداني محلي
-            return n;
-        }
-
-        window.updateStatus = async function(id, newStatus) {
-            const booking = globalBookings.find(b => b.id === id);
-
-            // فتح الواتساب مباشرة عند الضغط (قبل أي عملية انتظار) حتى لا يحظره المتصفح
-            if (newStatus === 'مؤكد' && booking) {
-                const msg = booking.kind === 'offer'
-                    ? `السلام عليكم ${booking.clientName}،\nيسعدنا إبلاغكم بتأكيد حجزكم في العرض: ${booking.offerTitle} ✅\n💰 السعر: ${booking.priceApplied}\n\nنتشرف بخدمتكم.`
-                    : `السلام عليكم ${booking.clientName}،\n` +
-                    `يسعدنا إبلاغكم بتأكيد حجزكم في فندق المدينة - بورتسودان ✅\n\n` +
-                    `🛏️ الغرفة: ${booking.roomName}\n` +
-                    `📅 الوصول: ${booking.checkInDate}\n` +
-                    `📅 المغادرة: ${booking.checkOutDate}\n\n` +
-                    `نتشرف باستقبالكم.`;
-                const url = `https://api.whatsapp.com/send?phone=${normalizeWhatsAppNumber(booking.clientPhone)}&text=${encodeURIComponent(msg)}`;
-                const w = window.open(url, '_blank');
-                if (!w) window.location.href = url; // إذا حُظرت النافذة ننتقل في نفس الصفحة
-            }
-
-            try {
-                await updateDoc(doc(db, "booking", id), { status: newStatus });
-            } catch (error) {
-                console.error("خطأ في التحديث:", error);
-                alert('تعذر تحديث حالة الحجز.');
-            }
-        }
-
-        window.saveRoomNumber = async function(id) {
-            const v = document.getElementById('rn-' + id).value.trim();
-            try { await updateDoc(doc(db, "booking", id), { roomNumber: v }); }
-            catch (e) { console.error(e); alert('تعذر حفظ رقم الغرفة.'); }
-        }
-
-        window.markPaid = async function(id) {
-            try { await updateDoc(doc(db, "booking", id), { paid: true }); }
-            catch (e) { console.error(e); alert('تعذر تحديث حالة الدفع.'); }
-        }
-
-        // ===== العروض =====
-        let globalOffers = [];
-        function renderOffers() {
-            const sec = document.getElementById('offers');
-            const grid = document.getElementById('offers-grid');
-            const today = new Date().toISOString().split('T')[0];
-            const active = globalOffers.filter(o => !o.until || o.until >= today);
-            if (active.length === 0) {
-                grid.innerHTML = '<p class="text-center text-slate-400 md:col-span-3">لا توجد عروض حالياً، ترقبوا عروضنا القادمة 🎁</p>';
-            } else grid.innerHTML = active.map(o => `
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
-                    ${o.image ? `<img src="${o.image}" alt="" class="h-48 w-full object-cover">` : `<div class="h-48 w-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-6xl">🎁</div>`}
-                    <div class="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-1 rounded-full">${escapeHTML(o.type)}</span>
-                            <h3 class="font-bold text-xl text-slate-900 mt-2">${escapeHTML(o.title)}</h3>
-                            <p class="text-slate-600 text-sm my-2 whitespace-pre-line">${escapeHTML(o.description)}</p>
-                            ${o.oldPrice
-                                ? `<div class="text-sm space-y-1 mb-1">
-                                     <div>✅ للمقيمين في الفندق: <span class="text-emerald-600 font-black text-lg">${escapeHTML(o.price)}</span></div>
-                                     <div class="text-slate-500">👤 لغير المقيمين: <span class="font-bold">${escapeHTML(o.oldPrice)}</span></div>
-                                   </div>`
-                                : `<div class="mb-1"><span class="text-amber-600 font-black text-lg">${escapeHTML(o.price)}</span></div>`}
-                            ${o.until ? `<p class="text-xs text-red-500 font-bold">ينتهي العرض: ${escapeHTML(o.until)}</p>` : ''}
-                        </div>
-                        <button onclick="bookOffer('${o.id}')" class="mt-4 w-full bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold py-2.5 rounded-xl transition">احجز هذا العرض</button>
-                    </div>
-                </div>`).join('');
-            const list = document.getElementById('admin-offers-list');
-            if (list) list.innerHTML = globalOffers.length ? globalOffers.map(o => `
-                <div class="flex items-center justify-between gap-3 bg-white border border-slate-200 rounded-xl px-4 py-2 text-sm">
-                    <span><b>${escapeHTML(o.title)}</b> <span class="text-slate-500">— ${escapeHTML(o.type)} — ${escapeHTML(o.price)}</span></span>
-                    <button onclick="deleteOffer('${o.id}')" class="bg-red-600 hover:bg-red-700 text-white px-2.5 py-1 rounded-lg text-xs font-bold">حذف</button>
-                </div>`).join('') : '<p class="text-slate-400 text-sm">لا توجد عروض منشورة.</p>';
-        }
-
-        onSnapshot(collection(db, "offers"), (snap) => {
-            globalOffers = [];
-            snap.forEach(d => globalOffers.push({ id: d.id, ...d.data() }));
-            globalOffers.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
-            renderOffers();
-        }, (err) => {
-            console.error('offers', err);
-            document.getElementById('offers-grid').innerHTML = '<p class="text-center text-red-500 md:col-span-3">تعذر تحميل العروض: ' + escapeHTML(err.code || err.message) + '</p>';
-        });
-
-        function resizeImage(file, maxW = 700) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                const url = URL.createObjectURL(file);
-                img.onload = () => {
-                    const scale = Math.min(1, maxW / img.width);
-                    const c = document.createElement('canvas');
-                    c.width = img.width * scale; c.height = img.height * scale;
-                    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-                    URL.revokeObjectURL(url);
-                    resolve(c.toDataURL('image/jpeg', 0.7));
-                };
-                img.onerror = reject;
-                img.src = url;
-            });
-        }
-
-        window.addOffer = async function() {
-            const title = document.getElementById('offer-title').value.trim();
-            const price = document.getElementById('offer-price').value.trim();
-            if (!title || !price) { alert('يرجى كتابة عنوان العرض والسعر.'); return; }
-            const btn = document.getElementById('offer-add-btn');
-            btn.disabled = true; btn.innerText = 'جاري النشر...';
-            try {
-                const f = document.getElementById('offer-image').files[0];
-                const image = f ? await resizeImage(f) : '';
-                await addDoc(collection(db, "offers"), {
-                    title, price,
-                    type: document.getElementById('offer-type').value,
-                    oldPrice: document.getElementById('offer-old-price').value.trim(),
-                    until: document.getElementById('offer-until').value,
-                    description: document.getElementById('offer-desc').value.trim(),
-                    image,
-                    createdAt: new Date().toISOString()
-                });
-                ['offer-title','offer-price','offer-old-price','offer-until','offer-desc','offer-image'].forEach(i => document.getElementById(i).value = '');
-            } catch (e) {
-                console.error(e);
-                alert('تعذر نشر العرض (قد تكون الصورة كبيرة والتخزين ممتلئاً).');
-            } finally { btn.disabled = false; btn.innerText = 'نشر العرض'; }
-        }
-
-        window.deleteOffer = async function(id) {
-            if (confirm('حذف هذا العرض؟')) {
-                try { await deleteDoc(doc(db, "offers", id)); } catch (e) { console.error(e); }
-            }
-        }
-
-        window.deleteBooking = async function(id) {
-            if(confirm('هل أنت متأكد من حذف الحجز؟\n(سيبقى سجله محفوظًا في سجل الحجوزات)')) {
-                try {
-                    await deleteDoc(doc(db, "booking", id));
-                } catch (error) {
-                    console.error("خطأ في الحذف:", error);
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+        const HOTEL_WHATSAPP = '249XXXXXXXXX'; // ← ضع رقم واتساب الفندق هنا بالصيغة ال
